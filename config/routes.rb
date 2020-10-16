@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users_to_offers
+  resources :offers
   resources :partners
   devise_for :users
   root to: 'pages#home'
