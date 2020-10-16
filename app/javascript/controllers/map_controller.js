@@ -13,14 +13,14 @@ export default class extends Controller {
   initMapbox() {
     if (this.mapTarget) { // only build a map if there's a div#map to inject into
       mapboxgl.accessToken = this.mapTarget.dataset.mapboxApiKey;
-      this.address = JSON.parse(this.mapTarget.dataset.address);
+      this.address = JSON.parse(this.mapTarget.dataset.address); // Getting lat/lng from controller
 
-      console.log(this.user_address)
+      console.log(this.address)
 
       this.map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v10',
-        center: [this.address.lng, this.address.lat], //TODO: Pass User address lat and long
+        center: [this.address[0].lat, this.address[0].lng], 
         zoom: 15
       });
 
