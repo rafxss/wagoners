@@ -11,3 +11,15 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "components/onboard";
+@import "components/buttons";
+
+h1 {
+  font-size: 24px;
+  font-family: poppins;
+}
+
+p {
+  font-size: 14px;
+  font-family: poppins;
+}

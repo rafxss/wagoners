@@ -16,7 +16,11 @@
     </div>
   </div>
     <%= f.input :address, required: true, class: "form-control" %>
-    <%= f.input :date_of_birth, required: true, class: "form-control" %>
+    <%#= f.input :date_of_birth, required: true, class: "form-control" %>
+    <%= f.input :date_of_birth, required: true,
+                start_year: Date.today.year - 90, end_year: Date.today.year - 12,
+                order: [:day, :month, :year] %>
+
     <%= f.input :geolocation_access, class: "form-control", label: 'I agree to share my location' %>
 
     <%= f.input :email,
