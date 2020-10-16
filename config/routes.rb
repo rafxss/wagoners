@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :branch_offices
   resources :users_to_offers
   resources :offers
   resources :partners

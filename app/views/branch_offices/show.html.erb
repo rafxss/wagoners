@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @branch_office.address %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @branch_office.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @branch_office.longitude %>
+</p>
+
+<p>
+  <strong>Partner:</strong>
+  <%= @branch_office.partner_id %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @branch_office.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @branch_office.phone %>
+</p>
+
+<%= link_to 'Edit', edit_branch_office_path(@branch_office) %> |
+<%= link_to 'Back', branch_offices_path %>
