@@ -44,6 +44,8 @@ class UsersToOffersController < ApplicationController
       if @users_to_offer.update(users_to_offer_params)
         format.html { redirect_to @users_to_offer, notice: 'Users to offer was successfully updated.' }
         format.json { render :show, status: :ok, location: @users_to_offer }
+        # @users_to_offer.user.update(point: 100)
+
       else
         format.html { render :edit }
         format.json { render json: @users_to_offer.errors, status: :unprocessable_entity }
@@ -69,6 +71,6 @@ class UsersToOffersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def users_to_offer_params
-      params.require(:users_to_offer).permit(:user_id, :offer_id)
+      params.require(:users_to_offer).permit(:user_id, :offer_id, :used)
     end
 end
