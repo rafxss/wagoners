@@ -14,6 +14,7 @@ export default class extends Controller {
     if (this.mapTarget) { // only build a map if there's a div#map to inject into
       mapboxgl.accessToken = this.mapTarget.dataset.mapboxApiKey;
       this.address = JSON.parse(this.mapTarget.dataset.address)[0]; // Getting lat/lng from controller
+      this.offices = JSON.parse(this.mapTarget.dataset.offices)
 
       console.log(this.address)
 
@@ -33,6 +34,13 @@ export default class extends Controller {
 
   showBrancheOffices() {
     console.log("TODO: Show offices around the map")
+    this.offices.forEach((office) => {
+      const custom = document.createElement('div')
+      custom.classList.add('custom-marker')
+      new mapboxgl.Marker(custom)
+        .setLngLat([office.lng, office.lat])
+        .addTo(this.map);
+    });
   }
 
   fitMapToMyLocation() {
