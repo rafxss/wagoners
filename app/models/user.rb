@@ -5,12 +5,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :date_of_birth, presence: true
   validates :address, presence: true
 
-  enum category: [:bronce, :silver, :gold]
+
+  enum category: [:bronze, :silver, :gold]
+
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
