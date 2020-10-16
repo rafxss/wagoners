@@ -4,6 +4,21 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <div class="form-row">
+          <div class="col text-left">
+            <%= f.input :first_name,
+                        required: true,
+                        class: "form-control" %>
+          </div>
+          <div class="col text-left">
+            <%= f.input :last_name,
+                        class: "form-control" %>
+    </div>
+  </div>
+    <%= f.input :address, required: true, class: "form-control" %>
+    <%= f.input :date_of_birth, required: true, class: "form-control" %>
+    <%= f.input :geolocation_access, class: "form-control", label: 'I agree to share my location' %>
+
     <%= f.input :email,
                 required: true,
                 autofocus: true,
