@@ -20,8 +20,14 @@
     </div>
 
 
-  <div>
-    <a href="/profile" class="profile"> <i class="far fa-user"></i></a>
+    <div>
+      <% if current_user %>
+        <a href="/profile/<%= current_user.id %>" class="profile"> <i class="far fa-user"></i></a>
+      <% else %>
+        <a href="/users/sign_in" class="profile"> <i class="far fa-user"></i></a>
+      <% end %>
+    </div>
+
   </div>
 
 <% end %>
