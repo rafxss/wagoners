@@ -5,6 +5,9 @@ class OffersController < ApplicationController
   # GET /offers.json
   def index
     @offers = Offer.all
+    @offers.each do |offer|
+      offer.due_date_changes
+    end
   end
 
   # GET /offers/1
@@ -69,6 +72,9 @@ class OffersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def offer_params
-      params.require(:offer).permit(:partner_id, :description, :voucher, :category, :url, :used, :photo)
+
+      
+      params.require(:offer).permit(:partner_id, :description, :voucher, :category, :url, :due_date )
+
     end
 end
