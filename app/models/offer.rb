@@ -9,4 +9,13 @@ class Offer < ApplicationRecord
   validates :voucher, presence: true
   validates :category, presence: true
 
+  after_create :create_user_to_offer
+
+  def create_user_to_offer
+
+    @users = User.all
+    @users.each do |user|
+      UsersToOffer.create(offer_id: id, user: user)
+    end
+  end
 end
