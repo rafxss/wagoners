@@ -12,6 +12,13 @@ class PagesController < ApplicationController
         lng: office.longitude
       }
     end
+  end
 
+  def profile
+    if params[:id].present?
+      @user = User.find(params[:id])
+    else
+      @user = current_user
+    end
   end
 end
