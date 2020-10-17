@@ -33,3 +33,8 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 });
+
+document.getElementById('homeButton').onclick = function(event) {
+  document.getElementById('background-home').className = "d-none";
+}
+

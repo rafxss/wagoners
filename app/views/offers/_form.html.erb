@@ -7,8 +7,10 @@
     <%= f.association :partner %>
     <%= f.input :description %>
     <%= f.input :voucher %>
+    <%= f.input :level, collection: [['bronce', 'bronce'], ['silver', 'silver'], ['gold', 'gold']] %>
     <%= f.input :category, collection: OFFER_CATEGORIES, required: true, include_blank: "Offer's Category", label: false  %>
     <%= f.input :due_date %>
+    <%= f.input :url%>
   </div>
 
   <div class="form-actions">

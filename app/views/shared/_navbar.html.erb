@@ -1,15 +1,31 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <i class="fas fa-chevron-left"></i>
+<% if current_page?('/') || current_page?('/home') %>
+
+<% else %>
+
+  <div class="navbar navbar-light navbar-lewagon">
+
+    <%= link_to :back, class: "navbar-brand" do %>
+      <i class="fas fa-chevron-left"></i>
     <% end %>
+
     <div>
-      <p class="mb-0">Ofertas</p>
+      <% if current_page?('/offers') %>
+        <p class="mb-0">Ofertas</p>
+      <% elsif current_page?('/projects') %>
+        <p class="mb-0">Ofertas</p>
+      <% else %>
+        <p class="mb-0"></p>
+      <% end %>
     </div>
 
-  <div>
-    <i class="far fa-user"></i>
+    <div>
+    <%= link_to "/profile/#{:id}" do %>
+      <i class="far fa-user"></i>
+    <% end %>
+    </div>
   </div>
-</div>
+
+<% end %>
 
 
 

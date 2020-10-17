@@ -1,5 +1,25 @@
+<!-- <div data-controller="map">
+  <div id="map"
+      style="width: 100%; height: 600px;"
+      data-target="map.map"
+      data-address="<%= @user_address.to_json %>"
+      data-offices="<%= @offices.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
+ -->
+<div id="homeButton">
+  <div id="background-home">
+    <div class="d-flex align-items-center justify-content-center align-content-center">
+      <div class="p-2 text-center">
+        <img src="https://res.cloudinary.com/rafxss/image/upload/v1602936077/Screenshot_2020-10-17_at_14.00.37_ihb34p.png" style="width: 80vw;">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container home-page">
+  <br>
 
- <div class="container">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators text-dark">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -13,18 +33,16 @@
             <h1>Encuentra las mejores ofertas...</h1>
             <p>Utiliza las tarjetas de BBVA y encontraras numerosos beneficios...</p>
           </div>
-          <img class="d-block w-100" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889920/Frame_3_so60xu.jpg" alt="First slide">
+          <img class="d-block w-100 mb-5" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889920/Frame_3_so60xu.jpg" alt="First slide">
         </div>
       </div>
       <div class="carousel-item">
         <div class="container">
-          <div class="container">
             <div>
               <h1>Encuentra las mejores ofertas...</h1>
               <p>Utiliza las tarjetas de BBVA y encontraras numerosos beneficios...</p>
             </div>
-           <img class="d-block w-100" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889926/Frame_4_zd0m94.jpg" alt="Second slide">
-          </div>
+           <img class="d-block w-100 mb-5" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889926/Frame_4_zd0m94.jpg" alt="Second slide">
         </div>
       </div>
       <div class="carousel-item">
@@ -33,38 +51,30 @@
             <h1>Encuentra las mejores ofertas...</h1>
             <p>Utiliza las tarjetas de BBVA y encontraras numerosos beneficios...</p>
           </div>
-         <img class="d-block w-100" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889935/Frame_5_zu7ape.jpg" alt="Third slide">
+         <img class="d-block w-100 mb-5" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889935/Frame_5_zu7ape.jpg" alt="Third slide">
         </div>
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
+<!--       <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->      <span class="sr-only">Previous</span>
     </a>
     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
       <span class="sr-only">Next</span>
     </a>
   </div>
-  <div class="container text-center">
-    <button type="button" class="btn btn-bbva-primary">Get started</button>
+
+  <div class="d-flex mt-3">
+    <a class="btn btn-bbva-primary flex-grow-1 py-2" href="#">Descubre más</a>
+  </div>
+
+  <div class="d-flex mt-3">
+    <a class="btn btn-bbva-secondary flex-grow-1 py-2" href="/users/sign_in">Inicia sesión</a>
   </div>
   <br>
-  <div class="container text-center">
-    <button type="button" class="btn btn-bbva-secondary">Log in</button>
-  </div>
-</div>
 
-<% if current_user %>
-  <div class="container">
-    <div data-controller="map">
-      <div id="map"
-          style="width: 50vw; height: 50vh;"
-          data-target="map.map"
-          data-address="<%= @user_address.to_json %>"
-          data-offices="<%= @offices.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-    </div>
+  <div class="text-center mb-5">
+    <a class="link-form" href="/users/password/new">¿Aún no tienes cuenta? Regístrate ahora</a>
   </div>
-<% end %>
+
+</div>
