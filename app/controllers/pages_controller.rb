@@ -4,8 +4,8 @@ class PagesController < ApplicationController
   def home
     # @user_address = [ lat: @product.latitude, lng: @product.longitude ]
 
-    # @user_address = [ lat: current_user.latitude, lng: current_user.longitude  ] 
-  
+    # @user_address = [ lat: current_user.latitude, lng: current_user.longitude  ]
+
     # @offices = BranchOffice.all.geocoded.map do |office|
     #   {
     #     lat: office.latitude,
@@ -13,11 +13,12 @@ class PagesController < ApplicationController
     #   }
     # end
 
-  def profile
-    if params[:id].present?
-      @user = User.find(params[:id])
-    else
-      @user = current_user
+    def profile
+      if params[:id].present?
+        @user = User.find(params[:id])
+      else
+        @user = current_user
+      end
     end
   end
 end
