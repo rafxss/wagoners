@@ -9,4 +9,6 @@ class Offer < ApplicationRecord
   validates :voucher, presence: true
   validates :category, presence: true
 
+
+
 end
