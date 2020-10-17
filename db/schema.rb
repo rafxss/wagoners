@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_17_155337) do
+ActiveRecord::Schema.define(version: 2020_10_17_213555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2020_10_17_155337) do
     t.boolean "geolocation_access"
     t.float "latitude"
     t.float "longitude"
-    t.integer "category"
+    t.integer "category", default: 0
     t.date "date_of_birth"
     t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true

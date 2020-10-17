@@ -4,6 +4,11 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+.filter-card {
+  opacity: 0.6;
+}
+
+
 .card-trip > img {
   height: 200px;
   width: 100%;
@@ -46,10 +51,10 @@
   background-color: #B88B5E;
   color: white;
   border-radius: 50%;
-  height: 35px;
-  width: 35px;
-  margin-top: -86px;
-  margin-left: 30px;
+  height: 40px;
+  width: 40px;
+  margin-top: -80px;
+  margin-left: 120px;
   position: absolute;
 }
 
