@@ -7,6 +7,7 @@
 
   <div class="card-trip m-2 rounded">
 
+
         <% if offer.level == "bronce" %>
            <img src="<%= offer.url %>" style="border-bottom-color: #B88B5E" />
         <% elsif offer.level == "silver" %>
@@ -19,11 +20,12 @@
 
 
 
+
     <div class="card-trip-infos">
       <div>
         <div class="d-flex row justify-content-between">
           <div>
-            <h2><%= offer.partner.name.capitalize %></h2>
+            <h2><%= link_to offer.branch_office.partner.name.capitalize, offer_path(offer), class: "text-decoration-none color-link-none" %></h2>
             <p style="color:#ACCACA"><%= offer.voucher.to_i %>% de descuento.</p>
           </div>
           <div>
@@ -52,8 +54,8 @@
 
     </div>
   </div>
-
   <% end %>
+
 </div>
 
 
