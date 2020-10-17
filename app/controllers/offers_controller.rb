@@ -5,7 +5,12 @@ class OffersController < ApplicationController
   # GET /offers.json
   def index
     # byebug
-    @offers = Offer.all
+    # @offers = Offer.all
+    if params[:user_id].present?
+      @offers = Offer.includes(:users_to_offers).where(users_to_offers: { user_id: current_user.id, code_used: true })
+    else
+      @offers = Offer.all
+    end
 
     @offers.each do |offer|
       offer.due_date_changes
