@@ -31,9 +31,22 @@
           </p>
         </div>
         <div>
-          <p style="color:#C09D7A">
-            <%= @offer.level.capitalize %>
-          </p>
+
+          <% if @offer.level == "bronce" %>
+            <p style="color: #B88B5E">
+              <%= @offer.level.capitalize %>
+            </p>
+          <% elsif @offer.level == "silver" %>
+            <p style="color: #A3A7A7">
+              <%= @offer.level.capitalize %>
+            </p>
+          <% else  %>
+            <p style="color: #EDCF80">
+              <%= @offer.level.capitalize %>
+            </p>
+          <% end %>
+
+
         </div>
       </div>
     </div>
