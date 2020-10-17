@@ -1,1 +1,10 @@
 // Specific CSS for your home-page
+.background-mobile {
+    height: 100vh;
+    width: 100vw;
+    background-color: #ACCACA;
+    align-items: center;
+    padding: 10vw 15vh;
+    position: fixed;
+    z-index: 999;
+}
