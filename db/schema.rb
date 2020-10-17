@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_17_141618) do
+ActiveRecord::Schema.define(version: 2020_10_17_155337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2020_10_17_141618) do
   end
 
   create_table "offers", force: :cascade do |t|
-    t.bigint "partner_id", null: false
     t.string "description"
     t.float "voucher"
     t.integer "category"
@@ -58,7 +57,8 @@ ActiveRecord::Schema.define(version: 2020_10_17_141618) do
     t.date "due_date"
     t.string "url"
     t.string "level"
-    t.index ["partner_id"], name: "index_offers_on_partner_id"
+    t.bigint "branch_office_id"
+    t.index ["branch_office_id"], name: "index_offers_on_branch_office_id"
   end
 
   create_table "partners", force: :cascade do |t|
@@ -105,7 +105,6 @@ ActiveRecord::Schema.define(version: 2020_10_17_141618) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "branch_offices", "partners"
-  add_foreign_key "offers", "partners"
   add_foreign_key "users_to_offers", "offers"
   add_foreign_key "users_to_offers", "users"
 end

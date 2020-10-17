@@ -21,27 +21,34 @@
         <div class="card-trip-infos d-flex align-items-end">
 
           <div>
-            <h2 class="mb-1"><%= offer.partner.name.capitalize %></h2>
-            <p><%= offer.voucher.to_i %>% de descuento.</p>
+            <h2 class="mb-1"><%= offer.branch_office.partner.name.capitalize %></h2>
+            <p"><%= offer.voucher.to_i %>% de descuento.</p>
           </div>
 
           <div>
-            <p class="card-trip-pricing"> <%= offer.due_date %></p>
+            <% offer_lat = offer.branch_office.latitude %>
+            <% offer_lon = offer.branch_office.longitude %>
+            <% user_lat = current_user.latitude %>
+            <% user_lon = current_user.longitude %>
+            <% distance = Geocoder::Calculations.distance_between([offer_lat, offer_lon], [user_lat, user_lon], units: :km) %>
+            <p><%= distance.round(1) %> km</p>
+          
 
             <% if offer.level == "bronce" %>
-                <div class="offer-cat d-flex justify-content-center align-items-center" style="background-color: #B88B5E">
+                <div class="offer-cat" style="background-color: #B88B5E">
                   <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
                 </div>
             <% elsif offer.level == "silver" %>
-                <div class="offer-cat d-flex justify-content-center align-items-center" style="background-color:  #A3A7A7">
+                <div class="offer-cat" style="background-color:  #A3A7A7">
                   <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
                 </div>
             <% else  %>
-                <div class="offer-cat d-flex justify-content-center align-items-center" style="background-color:  #EDCF80">
+                <div class="offer-cat" style="background-color:  #EDCF80">
                   <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
                 </div>
 
             <% end %>
+
 
           </div>
 

@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users
+  resources :offers
   get '/profile', to: 'pages#profile'
   get '/profile/:id', to: 'pages#profile'
   resources :branch_offices
   resources :users_to_offers
-  resources :offers
   resources :partners
-  devise_for :users
   root to: 'pages#home'
 
 
