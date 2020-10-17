@@ -9,6 +9,7 @@ class Offer < ApplicationRecord
   validates :voucher, presence: true
   validates :category, presence: true
 
+
   after_create :create_user_to_offer
 
   def due_date_changes
@@ -23,5 +24,6 @@ class Offer < ApplicationRecord
       UsersToOffer.create(offer_id: id, user: user)
     end
   end
+
 
 end
