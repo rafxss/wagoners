@@ -9,10 +9,14 @@ class Offer < ApplicationRecord
   validates :voucher, presence: true
   validates :category, presence: true
 
+
+  def due_date_changes
+    if (Date.today > self.due_date)
+      self.destroy
+
   after_create :create_user_to_offer
 
   def create_user_to_offer
-
     @users = User.all
     @users.each do |user|
       UsersToOffer.create(offer_id: id, user: user)
