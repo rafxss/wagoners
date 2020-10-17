@@ -4,55 +4,50 @@
 
    <% @offers.each do |offer| %>
 
+   <%= link_to offer_path(offer), class: "text-decoration-none color-link-none" do %>
+      <div class="card-trip mt-4 rounded">
 
-  <div class="card-trip m-2 rounded">
-
-        <% if offer.level == "bronce" %>
-           <img src="<%= offer.url %>" style="border-bottom-color: #B88B5E" />
-        <% elsif offer.level == "silver" %>
-           <img src="<%= offer.url %>" style="border-bottom-color: #A3A7A7" />
-        <% else  %>
-            <img src="<%= offer.url %>" style="border-bottom-color: #EDCF80" />
-
-        <% end %>
-
+            <% if offer.level == "bronce" %>
+               <img src="<%= offer.url %>" style="border-bottom-color: #B88B5E" />
+            <% elsif offer.level == "silver" %>
+               <img src="<%= offer.url %>" style="border-bottom-color: #A3A7A7" />
+            <% else  %>
+                <img src="<%= offer.url %>" style="border-bottom-color: #EDCF80" />
+            <% end %>
 
 
 
-    <div class="card-trip-infos">
-      <div>
-        <div class="d-flex row justify-content-between">
+
+        <div class="card-trip-infos d-flex align-items-end">
+
           <div>
-            <h2><%= offer.partner.name.capitalize %></h2>
-            <p style="color:#ACCACA"><%= offer.voucher.to_i %>% de descuento.</p>
+            <h2 class="mb-1"><%= offer.partner.name.capitalize %></h2>
+            <p><%= offer.voucher.to_i %>% de descuento.</p>
           </div>
+
           <div>
             <p class="card-trip-pricing"> <%= offer.due_date %></p>
+
+            <% if offer.level == "bronce" %>
+                <div class="offer-cat d-flex justify-content-center align-items-center" style="background-color: #B88B5E">
+                  <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
+                </div>
+            <% elsif offer.level == "silver" %>
+                <div class="offer-cat d-flex justify-content-center align-items-center" style="background-color:  #A3A7A7">
+                  <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
+                </div>
+            <% else  %>
+                <div class="offer-cat d-flex justify-content-center align-items-center" style="background-color:  #EDCF80">
+                  <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
+                </div>
+
+            <% end %>
+
           </div>
+
         </div>
-
       </div>
-      <div>
-        <% if offer.level == "bronce" %>
-            <div class="offer-cat" style="background-color: #B88B5E">
-              <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
-            </div>
-        <% elsif offer.level == "silver" %>
-            <div class="offer-cat" style="background-color:  #A3A7A7">
-              <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
-            </div>
-        <% else  %>
-            <div class="offer-cat" style="background-color:  #EDCF80">
-              <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
-            </div>
-
-        <% end %>
-
-      </div>
-
-    </div>
-  </div>
-
+    <% end %>
   <% end %>
 </div>
 
