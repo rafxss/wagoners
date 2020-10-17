@@ -1,9 +1,11 @@
 <div class="container">
-<br>
+  <br>
 
   <h1 class="text-center">Inicia sesión</h1>
   <br>
+
   <p class="text-center px-4">Inicia sesión en tu cuenta de BBVoucher y continua disfruntando de ofertas personalizadas solo para ti.</p>
+  <br>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
@@ -19,11 +21,21 @@
                   label: false,
                   input_html: { autocomplete: "current-password", class: 'form-input-wagoners' } %>
     </div>
+    <br>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+    <div class="form-actions d-flex">
+      <%= f.button :submit, "Iniciar sesión", class: "btn-bbva-primary flex-grow-1 py-2" %>
     </div>
+
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <div class="d-flex mt-3">
+    <a class="btn btn-bbva-secondary flex-grow-1 py-2" href="/users/sign_up">Sign up</a>
+  </div>
+  <br>
+
+  <div class="text-center">
+    <a class="link-form" href="/users/password/new">¿Has olvidado tu contraseña?</a>
+  </div>
+
 </div>
