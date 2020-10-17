@@ -22,16 +22,43 @@
 
           <div>
             <h2 class="mb-1"><%= offer.branch_office.partner.name.capitalize %></h2>
-            <p"><%= offer.voucher.to_i %>% de descuento.</p>
+
+            <% if params[:user_id].present? %>
+            <div class="d-flex justify-content-between">
+              <p class="mr-2"><%= offer.updated_at.strftime("%a %d %b")%></p>
+              <p class="colored font-weight-bold"><%= offer.voucher.to_i %>% de descuento.</p>
+            </div>
+            <% else %>
+              <p class="colored font-weight-bold"><%= offer.voucher.to_i %>% de descuento.</p>
+            <% end %>
           </div>
 
           <div>
+
+
+
             <% offer_lat = offer.branch_office.latitude %>
             <% offer_lon = offer.branch_office.longitude %>
             <% user_lat = current_user.latitude %>
             <% user_lon = current_user.longitude %>
             <% distance = Geocoder::Calculations.distance_between([offer_lat, offer_lon], [user_lat, user_lon], units: :km) %>
-            <p><%= distance.round(1) %> km</p>
+
+            <% if params[:user_id].present? %>
+              <% offer.users_to_offers.each do |used_offer| %>
+                <% if used_offer.used == true %>
+                  <p class="text-warning">Usado</p>
+                <% else %>
+                  <p class="text-success">Disponible</p>
+                <% end %>
+              <% end %>
+            <% else %>
+              <div class="d-flex justify-content-between">
+                <p class="mr-1"> Hasta el <%= offer.due_date.strftime("%d %b")%> </p>
+                <p>•</p>
+                <p class="ml-1"><%= distance.round(1) %> km</p>
+              </div>
+            <% end %>
+
 
 
             <% if offer.level == "bronce" %>
@@ -46,7 +73,6 @@
                 <div class="offer-cat d-flex justify-content-center align-items-center" style="background-color:  #EDCF80">
                   <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
                 </div>
-
             <% end %>
 
 
@@ -57,8 +83,6 @@
     <% end %>
   <% end %>
 </div>
-
-
 
 <%= link_to 'New Offer', new_offer_path %>
 
