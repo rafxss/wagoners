@@ -18,20 +18,12 @@
 
 
 
-
         <div class="card-trip-infos d-flex align-items-end">
 
-
-
-
-    <div class="card-trip-infos">
-      <div>
-        <div class="d-flex row justify-content-between">
           <div>
-            <h2><%= link_to offer.branch_office.partner.name.capitalize, offer_path(offer), class: "text-decoration-none color-link-none" %></h2>
-            <p style="color:#ACCACA"><%= offer.voucher.to_i %>% de descuento.</p>
+            <h2 class="mb-1"><%= offer.branch_office.partner.name.capitalize %></h2>
+            <p"><%= offer.voucher.to_i %>% de descuento.</p>
           </div>
-
 
           <div>
             <% offer_lat = offer.branch_office.latitude %>
@@ -58,14 +50,12 @@
             <% end %>
 
 
-
           </div>
 
         </div>
       </div>
     <% end %>
   <% end %>
-
 </div>
 
 
