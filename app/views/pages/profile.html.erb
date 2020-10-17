@@ -44,10 +44,12 @@
     </div>
     <div class="row">
       <div class="col-12 col-md-8 mt-2 border-items">
-        <div class="d-flex align-items-center my-3">
-          <img class="d-block" src="https://res.cloudinary.com/djqgeagrs/image/upload/v1602942729/Group_48_ngsser.svg" style="height: 20px; width: 20px;">
-          <h3 class="mt-2 ml-2">Mis Offertas</h3>
-        </div>
+        <%= link_to user_offers_path(current_user), class: "text-decoration-none color-link-none" do %>
+          <div class="d-flex align-items-center my-3">
+            <img class="d-block" src="https://res.cloudinary.com/djqgeagrs/image/upload/v1602942729/Group_48_ngsser.svg" style="height: 20px; width: 20px;">
+            <h3 class="mt-2 ml-2">Mis Offertas</h3>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
