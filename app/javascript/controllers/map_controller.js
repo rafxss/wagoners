@@ -14,6 +14,7 @@ export default class extends Controller {
 
       this.toggleVisibility('map-container')
       this.toggleVisibility('offers-container')
+      // this.speedyRafa()
 
       // console.log('Map toggler')
     })
@@ -36,7 +37,7 @@ export default class extends Controller {
       this.showUserAddress()
       this.showBrancheOffices()
       this.fitMap()
-      // this.map.scrollZoom.disable();
+      this.map.scrollZoom.disable();
     }
   }
 
@@ -71,6 +72,16 @@ export default class extends Controller {
     const e = document.getElementById(id);
     // console.log(e)
     e.toggleAttribute('hidden')
+  }
+
+  speedyRafa() {
+    const e = document.querySelector('.mapboxgl-canvas')
+    // e.style.width = '100vw'
+    // e.style.height = '100vh'
+    // e.setAttribute('width', '750')
+    // e.setAttribute('height', '1334')
+
+    console.log(e)
   }
 
 }

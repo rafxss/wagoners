@@ -62,17 +62,15 @@
 </div>
 
 <% if current_user %>
-  <div id="map-container" class="container text-center" hidden>
-    <div class="row justify-content-between" data-controller="map">
-      <div id="map"
-          style="width: 100vw; height: 100vh;"
-          data-target="map.map"
-          data-address="<%= @user_address.to_json %>"
-          data-offices="<%= @branches_to_show.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div id="map-container" class="text-center" hidden>
+    <div class="justify-content-between" data-controller="map">
+      <div id="map" class="index-map"
+           <%# style="width: 100vw; height: 100vh;" %>
+           data-target="map.map"
+           data-address="<%= @user_address.to_json %>"
+           data-offices="<%= @branches_to_show.to_json %>"
+           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
-      <p>
-      </p>
     </div>
   </div>
 <% end %>
