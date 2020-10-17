@@ -13,6 +13,9 @@ class OffersController < ApplicationController
   # GET /offers/1
   # GET /offers/1.json
   def show
+
+    @office = [ lat: @offer.branch_office.latitude, lng: @offer.branch_office.longitude, address: @offer.branch_office.address  ] 
+
   end
 
   # GET /offers/new
@@ -75,7 +78,7 @@ class OffersController < ApplicationController
 
 
 
-      params.require(:offer).permit(:partner_id, :description, :voucher, :category, :level, :url, :due_date )
+      params.require(:offer).permit(:branch_office_id, :description, :voucher, :category, :level, :url, :due_date )
 
 
     end

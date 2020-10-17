@@ -14,7 +14,7 @@
       <div class= "m-3 d-flex">
         <div>
           <h1>
-            <%= @offer.partner.name.capitalize %>
+            <%= @offer.branch_office.partner.name.capitalize %>
           </h1>
           <p class="voucher" style="color:#ACCACA">
             <%= @offer.voucher.to_i %> % de descuento.
@@ -83,13 +83,21 @@
 </div>
 
 
-
-
-
-
-
-
-
+<% if current_user %>
+  <div class="container text-center mt-4">
+    <div class="row justify-content-between" data-controller="offer">
+      <div id="map"
+          style="width: 100vw; height: 30vh;"
+          data-target="offer.map"
+          data-office="<%= @office.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+      <p>
+        <%= @office[0][:address]%>
+      </p>
+    </div>
+  </div>
+<% end %>
 
 
   <!-- </div class="container ">
@@ -113,7 +121,7 @@
 
                 <div class="d-flex">
                   <div class="card-body">
-                      <h4 class="mb-2"> <%= @offer.partner.name.capitalize %></h4>
+                      <h4 class="mb-2"> <%= @offer.branch_office.partner.name.capitalize %></h4>
                       <div class="d-flex align-items-end">
                         <h5 class="mb-0 mr-2 "><%= @offer.voucher  %></h5>
                       </div>
