@@ -1,5 +1,5 @@
 class Offer < ApplicationRecord
-  belongs_to :partner
+  belongs_to :branch_office
   has_many :users_to_offers, dependent: :destroy
   has_many :users, through: :users_to_offers
 
