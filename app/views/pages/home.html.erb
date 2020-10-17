@@ -1,3 +1,4 @@
+
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
@@ -10,3 +11,60 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
+
+ <div class="container">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators text-dark">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="container">
+          <div>
+            <h1>Encuentra las mejores ofertas...</h1>
+            <p>Utiliza las tarjetas de BBVA y encontraras numerosos beneficios...</p>
+          </div>
+          <img class="d-block w-100" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889920/Frame_3_so60xu.jpg" alt="First slide">
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="container">
+          <div class="container">
+            <div>
+              <h1>Encuentra las mejores ofertas...</h1>
+              <p>Utiliza las tarjetas de BBVA y encontraras numerosos beneficios...</p>
+            </div>
+           <img class="d-block w-100" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889926/Frame_4_zd0m94.jpg" alt="Second slide">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="container">
+          <div>
+            <h1>Encuentra las mejores ofertas...</h1>
+            <p>Utiliza las tarjetas de BBVA y encontraras numerosos beneficios...</p>
+          </div>
+         <img class="d-block w-100" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889935/Frame_5_zu7ape.jpg" alt="Third slide">
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <div class="container text-center">
+    <button type="button" class="btn btn-bbva-primary">Get started</button>
+  </div>
+  <br>
+  <div class="container text-center">
+    <button type="button" class="btn btn-bbva-secondary">Log in</button>
+  </div>
+</div>
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_16_204121) do
+ActiveRecord::Schema.define(version: 2020_10_16_222203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 2020_10_16_204121) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "due_date"
-    t.boolean "used", default: false, null: false
     t.index ["partner_id"], name: "index_offers_on_partner_id"
   end
 
@@ -60,7 +59,7 @@ ActiveRecord::Schema.define(version: 2020_10_16_204121) do
     t.string "first_name"
     t.string "last_name"
     t.string "address"
-    t.integer "point"
+    t.integer "point", default: 0
     t.boolean "geolocation_access"
     t.float "latitude"
     t.float "longitude"
@@ -75,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_10_16_204121) do
     t.bigint "offer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "used", default: false, null: false
     t.index ["offer_id"], name: "index_users_to_offers_on_offer_id"
     t.index ["user_id"], name: "index_users_to_offers_on_user_id"
   end

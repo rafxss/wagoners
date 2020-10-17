@@ -1,0 +1,22 @@
+.form-input-wagoners {
+  border: none;
+  border-radius: 0px;
+  border-bottom: 2px solid #ced4da;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #ced4da;
+  outline: 0;
+  box-shadow: none;
+}
+
+.link-form {
+  color: #6D757D;
+}
+
+.link-form:hover {
+  color: #6D757D;
+  text-decoration: none;
+}
