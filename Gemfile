@@ -68,3 +68,5 @@ gem 'pg_search'
 gem 'rails_admin', '~> 2.0'
 
 gem "cloudinary", "~> 1.18"
+
+gem "rqrcode", "~> 1.1"
