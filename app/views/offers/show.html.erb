@@ -9,7 +9,7 @@
     <div class="card-trip d-flex align-items-center mt-4 col-xs-12">
       <br>
 
-        <% if @offer.level == "bronce" %>
+        <% if @offer.level == "bronze" %>
           <img class="d-block w-100" src="<%= @offer.url %>" style=" height: 250px; border-bottom-color: #B88B5E;" >
         <% elsif @offer.level == "silver" %>
           <img class="d-block w-100" src="<%= @offer.url %>" style=" height: 250px; border-bottom-color: #A3A7A7;" >
@@ -42,7 +42,7 @@
           </p>
         </div>
         <div>
-        <% if @offer.level == "bronce" %>
+        <% if @offer.level == "bronze" %>
             <div class="offer-show" style="background-color: #B88B5E">
               <i class="<%= OFFER_ICONS[@offer.category.downcase.to_sym] %>"></i>
             </div>
@@ -60,7 +60,7 @@
       </div>
         <div>
 
-          <% if @offer.level == "bronce" %>
+          <% if @offer.level == "bronze" %>
             <p style="color: #B88B5E">
               <%= @offer.level.capitalize %>
             </p>

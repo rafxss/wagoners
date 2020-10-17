@@ -7,7 +7,7 @@
    <%= link_to offer_path(offer), class: "text-decoration-none color-link-none" do %>
       <div class="card-trip mt-4  rounded">
 
-            <% if offer.level == "bronce" %>
+            <% if offer.level == "bronze" %>
                <img src="<%= offer.url %>" style="border-bottom-color: #B88B5E" />
             <% elsif offer.level == "silver" %>
                <img src="<%= offer.url %>" style="border-bottom-color: #A3A7A7" />
@@ -61,7 +61,7 @@
 
 
 
-            <% if offer.level == "bronce" %>
+            <% if offer.level == "bronze" %>
                 <div class="offer-cat d-flex justify-content-center align-items-center" style="background-color: #B88B5E">
                   <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
                 </div>
