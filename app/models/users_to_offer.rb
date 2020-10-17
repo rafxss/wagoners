@@ -35,9 +35,9 @@ class UsersToOffer < ApplicationRecord
   end
 
   def change_category
-    if user.point >= 50 && user.point < 100
+    if user.point >= 100 && user.point < 250
       user.update(category: 1)
-    elsif user.point >= 100
+    elsif user.point >= 250
       user.update(category: 2)
     else
       user.update(category: 0)
