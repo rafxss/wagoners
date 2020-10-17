@@ -22,6 +22,7 @@ class OffersController < ApplicationController
     user_lon = current_user.longitude
 
     @distance = Geocoder::Calculations.distance_between([offer_lat, offer_lon], [user_lat, user_lon], units: :km).round(1)
+    @office = [ lat: offer_lat, lng: offer_lon, address: @offer.branch_office.address  ]
   end
 
   # GET /offers/new
@@ -84,7 +85,7 @@ class OffersController < ApplicationController
 
 
 
-      params.require(:offer).permit(:partner_id, :description, :voucher, :category, :level, :url, :due_date )
+      params.require(:offer).permit(:branch_office_id, :description, :voucher, :category, :level, :url, :due_date )
 
 
     end
