@@ -1,11 +1,11 @@
 
 <div class= container >
-
+  <p class="mt-4 ">Enuentra las ofertas más cercanas a tu ubicación</p>
 
    <% @offers.each do |offer| %>
 
    <%= link_to offer_path(offer), class: "text-decoration-none color-link-none" do %>
-      <div class="card-trip mt-4 rounded">
+      <div class="card-trip mt-4  rounded">
 
             <% if offer.level == "bronce" %>
                <img src="<%= offer.url %>" style="border-bottom-color: #B88B5E" />
