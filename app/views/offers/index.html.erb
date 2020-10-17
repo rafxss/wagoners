@@ -3,83 +3,14 @@
   <p class="mt-4 ">Enuentra las ofertas más cercanas a tu ubicación</p>
 
    <% @offers.each do |offer| %>
-
-   <%= link_to offer_path(offer), class: "text-decoration-none color-link-none" do %>
-      <div class="card-trip mt-4  rounded">
-
-            <% if offer.level == "bronze" %>
-               <img src="<%= offer.url %>" style="border-bottom-color: #B88B5E" />
-            <% elsif offer.level == "silver" %>
-               <img src="<%= offer.url %>" style="border-bottom-color: #A3A7A7" />
-            <% else  %>
-                <img src="<%= offer.url %>" style="border-bottom-color: #EDCF80" />
-            <% end %>
-
-
-
-
-        <div class="card-trip-infos d-flex align-items-end">
-
-          <div>
-            <h2 class="mb-1"><%= offer.branch_office.partner.name.capitalize %></h2>
-
-            <% if params[:user_id].present? %>
-            <div class="d-flex justify-content-between">
-              <p class="mr-2"><%= offer.updated_at.strftime("%a %d %b")%></p>
-              <p class="colored font-weight-bold"><%= offer.voucher.to_i %>% de descuento.</p>
-            </div>
-            <% else %>
-              <p class="colored font-weight-bold"><%= offer.voucher.to_i %>% de descuento.</p>
-            <% end %>
-          </div>
-
-          <div>
-
-
-
-            <% offer_lat = offer.branch_office.latitude %>
-            <% offer_lon = offer.branch_office.longitude %>
-            <% user_lat = current_user.latitude %>
-            <% user_lon = current_user.longitude %>
-            <% distance = Geocoder::Calculations.distance_between([offer_lat, offer_lon], [user_lat, user_lon], units: :km) %>
-
-            <% if params[:user_id].present? %>
-              <% offer.users_to_offers.each do |used_offer| %>
-                <% if used_offer.used == true %>
-                  <p class="text-warning">Usado</p>
-                <% else %>
-                  <p class="text-success">Disponible</p>
-                <% end %>
-              <% end %>
-            <% else %>
-              <div class="d-flex justify-content-between">
-                <p class="mr-1"> Hasta el <%= offer.due_date.strftime("%d %b")%> </p>
-                <p>•</p>
-                <p class="ml-1"><%= distance.round(1) %> km</p>
-              </div>
-            <% end %>
-
-
-
-            <% if offer.level == "bronze" %>
-                <div class="offer-cat d-flex justify-content-center align-items-center" style="background-color: #B88B5E">
-                  <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
-                </div>
-            <% elsif offer.level == "silver" %>
-                <div class="offer-cat d-flex justify-content-center align-items-center" style="background-color:  #A3A7A7">
-                  <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
-                </div>
-            <% else  %>
-                <div class="offer-cat d-flex justify-content-center align-items-center" style="background-color:  #EDCF80">
-                  <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
-                </div>
-            <% end %>
-
-
-          </div>
-
-        </div>
-      </div>
+    <% if current_user.category == "gold" %>
+      <%= render 'normal_card', offer: offer %>
+    <% elsif current_user.category == "silver" && offer.level == "bronze" || current_user.category == "silver" && offer.level == "silver" %>
+      <%= render 'normal_card', offer: offer %>
+    <% elsif current_user.category == "bronze" && (offer.level == "bronze") %>
+      <%= render 'normal_card', offer: offer %>
+    <% else %>
+      <%= render 'disable_card', offer: offer %>
     <% end %>
   <% end %>
 </div>

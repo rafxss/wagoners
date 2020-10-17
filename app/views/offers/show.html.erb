@@ -1,65 +1,48 @@
 
-
-
-
-
 <div class="pridv">
   <div class="row justify-content-between" style="margin-top: -24px;">
 
     <div class="card-trip d-flex align-items-center mt-4 col-xs-12">
       <br>
-
         <% if @offer.level == "bronze" %>
           <img class="d-block w-100" src="<%= @offer.url %>" style=" height: 250px; border-bottom-color: #B88B5E;" >
         <% elsif @offer.level == "silver" %>
           <img class="d-block w-100" src="<%= @offer.url %>" style=" height: 250px; border-bottom-color: #A3A7A7;" >
-
         <% else  %>
           <img class="d-block w-100" src="<%= @offer.url %>" style=" height: 250px; border-bottom-color: #EDCF80;" >
-
         <% end %>
-
     </div>
+
     <div class="container">
       <div class= "m-3 d-flex">
         <div>
-          <h1>
-            <%= @offer.branch_office.partner.name.capitalize %>
-          </h1>
+          <h1> <%= @offer.branch_office.partner.name.capitalize %> </h1>
           <p class="voucher" style="color:#ACCACA">
             <%= @offer.voucher.to_i %> % de descuento.
             <%= @distance %> km
           </p>
-
-          <p>
-            Con BBVouchers podrás salir a cenar más que nunca.
-          </p>
-          <p>
-            Te devolvemos el <%= @offer.voucher.to_i %>% sólo por pagar con las tarjetas de BBVA.
-          </p>
-          <p>
-            Sin límites, consume todo lo que quieras.
-          </p>
+          <p> Con BBVouchers podrás salir a cenar más que nunca. </p>
+          <p> Te devolvemos el <%= @offer.voucher.to_i %>% sólo por pagar con las tarjetas de BBVA. </p>
+          <p> Sin límites, consume todo lo que quieras. </p>
         </div>
+
         <div>
-        <% if @offer.level == "bronze" %>
-            <div class="offer-show" style="background-color: #B88B5E">
-              <i class="<%= OFFER_ICONS[@offer.category.downcase.to_sym] %>"></i>
-            </div>
-        <% elsif @offer.level == "silver" %>
-            <div class="offer-show" style="background-color:  #A3A7A7">
-              <i class="<%= OFFER_ICONS[@offer.category.downcase.to_sym] %>"></i>
-            </div>
-        <% else  %>
-            <div class="offer-show" style="background-color:  #EDCF80">
-              <i class="<%= OFFER_ICONS[@offer.category.downcase.to_sym] %>"></i>
-            </div>
+          <% if @offer.level == "bronze" %>
+              <div class="offer-show" style="background-color: #B88B5E">
+                <i class="<%= OFFER_ICONS[@offer.category.downcase.to_sym] %>"></i>
+              </div>
+          <% elsif @offer.level == "silver" %>
+              <div class="offer-show" style="background-color:  #A3A7A7">
+                <i class="<%= OFFER_ICONS[@offer.category.downcase.to_sym] %>"></i>
+              </div>
+          <% else  %>
+              <div class="offer-show" style="background-color:  #EDCF80">
+                <i class="<%= OFFER_ICONS[@offer.category.downcase.to_sym] %>"></i>
+              </div>
+          <% end %>
+        </div>
 
-        <% end %>
-
-      </div>
         <div>
-
           <% if @offer.level == "bronze" %>
             <p style="color: #B88B5E">
               <%= @offer.level.capitalize %>
@@ -73,10 +56,10 @@
               <%= @offer.level.capitalize %>
             </p>
           <% end %>
-
-
         </div>
+
       </div>
+
     </div>
       <div class="container">
         <div class="container mt-4 mb-4 text-left">
