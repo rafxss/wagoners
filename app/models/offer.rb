@@ -1,7 +1,7 @@
 class Offer < ApplicationRecord
   belongs_to :partner
   has_many :users_to_offers, dependent: :destroy
-  has_many :users, through: :users_to_offer
+  has_many :users, through: :users_to_offers
 
   enum category: OFFER_CATEGORIES
 
