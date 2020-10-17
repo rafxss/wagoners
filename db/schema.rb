@@ -87,10 +87,6 @@ ActiveRecord::Schema.define(version: 2020_10_17_155337) do
     t.float "longitude"
     t.integer "category"
     t.date "date_of_birth"
-    t.string "provider"
-    t.string "uid"
-    t.string "token"
-    t.datetime "token_expiry"
     t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
