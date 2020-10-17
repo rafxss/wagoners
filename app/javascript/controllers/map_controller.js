@@ -6,8 +6,17 @@ export default class extends Controller {
   static targets = ['map']
 
   connect() {
-    console.log("hello from StimulusJS")
+    // console.log("hello from StimulusJS")
     this.initMapbox()
+    const mapToggler = document.getElementById('map-toggler')
+    mapToggler.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      this.toggleVisibility('map-container')
+      this.toggleVisibility('offers-container')
+
+      // console.log('Map toggler')
+    })
   }
 
   initMapbox() {
@@ -19,15 +28,15 @@ export default class extends Controller {
       this.map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v10',
-        center: [this.address.lng, this.address.lat], 
+        // center: [this.address.lng, this.address.lat], 
         zoom: 15
       });
 
 
       this.showUserAddress()
       this.showBrancheOffices()
-      // this.fitMapToMyLocation()
-      this.map.scrollZoom.disable();
+      this.fitMap()
+      // this.map.scrollZoom.disable();
     }
   }
 
@@ -35,7 +44,7 @@ export default class extends Controller {
     this.offices.forEach((office) => {
       const custom = document.createElement('div')
       custom.classList.add('office-marker')
-      console.log(office)
+      // console.log(office)
       new mapboxgl.Marker(custom)
         .setLngLat([office.lng, office.lat])
         .addTo(this.map);
@@ -46,16 +55,22 @@ export default class extends Controller {
     const address = this.address
     const custom = document.createElement('div')
     custom.classList.add('user-marker')
-    console.log(address)
+    // console.log(address)
     new mapboxgl.Marker(custom)
       .setLngLat([address.lng, address.lat])
       .addTo(this.map);
   }
 
-  fitMapToMyLocation() {
+  fitMap() {
     const bounds = new mapboxgl.LngLatBounds();
-    this.markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
+    this.offices.forEach(office => bounds.extend([office.lng, office.lat]));
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+  }
+
+  toggleVisibility(id) {
+    const e = document.getElementById(id);
+    // console.log(e)
+    e.toggleAttribute('hidden')
   }
 
 }

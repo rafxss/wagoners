@@ -10,6 +10,23 @@ class OffersController < ApplicationController
     @offers.each do |offer|
       offer.due_date_changes
     end
+
+    @user_address = [ lat: current_user.latitude, lng: current_user.longitude  ]
+
+    @branches_to_show = @offers.map do |offer| 
+      {
+        lat: offer.branch_office.latitude ,
+        lng: offer.branch_office.longitude
+      }
+    end
+
+
+    # @offices = BranchOffice.all.geocoded.map do |office|
+    #   {
+    #     lat: office.latitude,
+    #     lng: office.longitude
+    #   }
+    # end
   end
 
   # GET /offers/1
