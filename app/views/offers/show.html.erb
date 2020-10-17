@@ -6,9 +6,19 @@
 <div class="container">
   <div class="row justify-content-between">
 
-    <div class="d-flex align-items-center mt-4 col-xs-12">
+    <div class="card-trip d-flex align-items-center mt-4 col-xs-12">
       <br>
-      <img class="d-block w-100" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602896919/nrd-D6Tu_L3chLE-unsplash_vuxmqj.jpg" style="border-radius: 15px; height: 250px;" >
+
+        <% if @offer.level == "bronce" %>
+          <img class="d-block w-100" src="<%= @offer.url %>" style=" height: 250px; border-bottom-color: #B88B5E;" >
+        <% elsif @offer.level == "silver" %>
+          <img class="d-block w-100" src="<%= @offer.url %>" style=" height: 250px; border-bottom-color: #A3A7A7;" >
+
+        <% else  %>
+          <img class="d-block w-100" src="<%= @offer.url %>" style=" height: 250px; border-bottom-color: #EDCF80;" >
+
+        <% end %>
+
     </div>
     <div class="container">
       <div class= "m-3 d-flex">
@@ -30,6 +40,23 @@
             Sin límites, consume todo lo que quieras.
           </p>
         </div>
+        <div>
+        <% if @offer.level == "bronce" %>
+            <div class="offer-show" style="background-color: #B88B5E">
+              <i class="fas fa-utensils"></i>
+            </div>
+        <% elsif @offer.level == "silver" %>
+            <div class="offer-show" style="background-color:  #A3A7A7">
+              <i class="fas fa-utensils"></i>
+            </div>
+        <% else  %>
+            <div class="offer-show" style="background-color:  #EDCF80">
+              <i class="fas fa-utensils"></i>
+            </div>
+
+        <% end %>
+
+      </div>
         <div>
 
           <% if @offer.level == "bronce" %>
