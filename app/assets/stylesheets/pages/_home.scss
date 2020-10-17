@@ -8,3 +8,19 @@
     position: fixed;
     z-index: 999;
 }
+
+.home-page {
+  min-height: 100vh;
+  display: grid;
+  align-content: center;
+}
+
+#background-home {
+  height: 100vh;
+  width: 100vw;
+  background-color: #ACCACA;
+  display: grid;
+  align-content: center;
+  position: fixed;
+  z-index: 900;
+}
