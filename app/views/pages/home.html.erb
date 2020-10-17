@@ -1,7 +1,3 @@
-
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
 <div data-controller="map">
   <div id="map"
       style="width: 100%; height: 600px;"
@@ -26,18 +22,16 @@
             <h1>Encuentra las mejores ofertas...</h1>
             <p>Utiliza las tarjetas de BBVA y encontraras numerosos beneficios...</p>
           </div>
-          <img class="d-block w-100" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889920/Frame_3_so60xu.jpg" alt="First slide">
+          <img class="d-block w-100 mb-5" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889920/Frame_3_so60xu.jpg" alt="First slide">
         </div>
       </div>
       <div class="carousel-item">
         <div class="container">
-          <div class="container">
             <div>
               <h1>Encuentra las mejores ofertas...</h1>
               <p>Utiliza las tarjetas de BBVA y encontraras numerosos beneficios...</p>
             </div>
-           <img class="d-block w-100" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889926/Frame_4_zd0m94.jpg" alt="Second slide">
-          </div>
+           <img class="d-block w-100 mb-5" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889926/Frame_4_zd0m94.jpg" alt="Second slide">
         </div>
       </div>
       <div class="carousel-item">
@@ -46,7 +40,7 @@
             <h1>Encuentra las mejores ofertas...</h1>
             <p>Utiliza las tarjetas de BBVA y encontraras numerosos beneficios...</p>
           </div>
-         <img class="d-block w-100" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889935/Frame_5_zu7ape.jpg" alt="Third slide">
+         <img class="d-block w-100 mb-5" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602889935/Frame_5_zu7ape.jpg" alt="Third slide">
         </div>
       </div>
     </div>
@@ -59,12 +53,19 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  <div class="container text-center">
-    <button type="button" class="btn btn-bbva-primary">Get started</button>
+
+  <div class="d-flex mt-3">
+    <a class="btn btn-bbva-primary flex-grow-1 py-2" href="#">Descubre más</a>
+  </div>
+
+  <div class="d-flex mt-3">
+    <a class="btn btn-bbva-secondary flex-grow-1 py-2" href="/users/sign_in">Inicia sesión</a>
   </div>
   <br>
-  <div class="container text-center">
-    <button type="button" class="btn btn-bbva-secondary">Log in</button>
+
+  <div class="text-center mb-5">
+    <a class="link-form" href="/users/password/new">¿Aún no tienes cuenta? Regístrate ahora</a>
   </div>
+
 </div>
 
