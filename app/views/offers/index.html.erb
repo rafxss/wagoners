@@ -35,15 +35,15 @@
       <div>
         <% if offer.level == "bronce" %>
             <div class="offer-cat" style="background-color: #B88B5E">
-              <i class="fas fa-utensils"></i>
+              <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
             </div>
         <% elsif offer.level == "silver" %>
             <div class="offer-cat" style="background-color:  #A3A7A7">
-              <i class="fas fa-utensils"></i>
+              <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
             </div>
         <% else  %>
             <div class="offer-cat" style="background-color:  #EDCF80">
-              <i class="fas fa-utensils"></i>
+              <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
             </div>
 
         <% end %>
