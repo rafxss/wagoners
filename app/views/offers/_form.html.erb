@@ -4,7 +4,7 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.association :partner %>
+    <%= f.association :branch_office %>
     <%= f.input :description %>
     <%= f.input :voucher %>
     <%= f.input :level, collection: [['bronce', 'bronce'], ['silver', 'silver'], ['gold', 'gold']] %>

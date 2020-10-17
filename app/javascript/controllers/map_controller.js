@@ -20,7 +20,7 @@ export default class extends Controller {
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v10',
         center: [this.address.lng, this.address.lat], 
-        zoom: 16
+        zoom: 15
       });
 
 

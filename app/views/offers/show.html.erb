@@ -28,6 +28,7 @@
           </h1>
           <p class="voucher" style="color:#ACCACA">
             <%= @offer.voucher.to_i %> % de descuento.
+            <%= @distance %> km
           </p>
 
           <p>
@@ -43,15 +44,15 @@
         <div>
         <% if @offer.level == "bronce" %>
             <div class="offer-show" style="background-color: #B88B5E">
-              <i class="fas fa-utensils"></i>
+              <i class="<%= OFFER_ICONS[@offer.category.downcase.to_sym] %>"></i>
             </div>
         <% elsif @offer.level == "silver" %>
             <div class="offer-show" style="background-color:  #A3A7A7">
-              <i class="fas fa-utensils"></i>
+              <i class="<%= OFFER_ICONS[@offer.category.downcase.to_sym] %>"></i>
             </div>
         <% else  %>
             <div class="offer-show" style="background-color:  #EDCF80">
-              <i class="fas fa-utensils"></i>
+              <i class="<%= OFFER_ICONS[@offer.category.downcase.to_sym] %>"></i>
             </div>
 
         <% end %>
@@ -110,15 +111,22 @@
 </div>
 
 
+<% if current_user %>
+  <div class="container text-center mt-4">
+    <div class="row justify-content-between" data-controller="offer">
+      <div id="map"
+          style="width: 100vw; height: 30vh;"
+          data-target="offer.map"
+          data-office="<%= @office.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+      <p>
+        <%= @office[0][:address]%>
+      </p>
+    </div>
+  </div>
+<% end %>
 
 
 
-
-
-
-
-
-
-
-
-
+  

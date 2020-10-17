@@ -4,7 +4,9 @@ class OffersController < ApplicationController
   # GET /offers
   # GET /offers.json
   def index
+    # byebug
     @offers = Offer.all
+
     @offers.each do |offer|
       offer.due_date_changes
     end
@@ -13,6 +15,14 @@ class OffersController < ApplicationController
   # GET /offers/1
   # GET /offers/1.json
   def show
+    offer_lat = @offer.branch_office.latitude
+    offer_lon = @offer.branch_office.longitude
+
+    user_lat = current_user.latitude
+    user_lon = current_user.longitude
+
+    @distance = Geocoder::Calculations.distance_between([offer_lat, offer_lon], [user_lat, user_lon], units: :km).round(1)
+    @office = [ lat: offer_lat, lng: offer_lon, address: @offer.branch_office.address  ]
   end
 
   # GET /offers/new
@@ -75,7 +85,7 @@ class OffersController < ApplicationController
 
 
 
-      params.require(:offer).permit(:partner_id, :description, :voucher, :category, :level, :url, :due_date )
+      params.require(:offer).permit(:branch_office_id, :description, :voucher, :category, :level, :url, :due_date )
 
 
     end
