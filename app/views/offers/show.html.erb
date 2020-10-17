@@ -1,42 +1,78 @@
 
 
-  <div class="container">
-
-    <div class="d-flex align-items-center mt-4">
-    </div>
 
 
+
+<div class="container">
+  <div class="row justify-content-between">
+
+    <div class="d-flex align-items-center mt-4 col-xs-12">
       <br>
-      <img class="d-block w-100" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602896919/nrd-D6Tu_L3chLE-unsplash_vuxmqj.jpg" style="border-radius: 15px;" >
+      <img class="d-block w-100" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602896919/nrd-D6Tu_L3chLE-unsplash_vuxmqj.jpg" style="border-radius: 15px; height: 250px;" >
     </div>
-  </div>
-  <br>
+    <div class="container">
+      <div class= "m-3 d-flex">
+        <div>
+          <h1>
+            <%= @offer.partner.name.capitalize %>
+          </h1>
+          <p class="voucher" style="color:#ACCACA">
+            <%= @offer.voucher.to_i %> % de descuento.
+          </p>
 
-  <div class="container ml-4">
-    <div class="row justify-content-between">
-      <div class="col-xs-12 col-lg-8">
-
-      <div><h1 class="m-0"><strong> <%= @offer.partner.name.capitalize %>
-        </strong></h1>
-
+          <p>
+            Con BBVouchers podrás salir a cenar más que nunca.
+          </p>
+          <p>
+            Te devolvemos el <%= @offer.voucher.to_i %>% sólo por pagar con las tarjetas de BBVA.
+          </p>
+          <p>
+            Sin límites, consume todo lo que quieras.
+          </p>
         </div>
-          <div class="d-flex justify-content-between">
+        <div>
+          <p style="color:#C09D7A">
+            <%= @offer.category %>
+          </p>
+        </div>
+      </div>
+    </div>
+      <div class="container">
+        <div class="container mt-4 mb-4 text-left">
+          <div class="card shadow-lg p-1 bg-white" style="border-radius: 15px;" >
+            <div class="card-body">
               <div>
-                <div class="d-flex">
-                  <p class="mb-3"><i class="fas fa-tags"></i> Offer Description</p>
-                </div>
-                  <p><%= @offer.description %></p>
-              </div>
-              <div>
-                <div class="d-flex">
-                  <p class="mb-3"><i class="fas fa-percent"></i> Voucher</p>
-                  <p><%= @offer.voucher %></p>
+                <div class="mb-0" >
+                    <p class="mb-0">¿Cómo funciona?</p>
+                    <p class="mb-0 text-black-50"> Tan solo tendras que efectuar el pago con alguna tarjeta de BBVA.</p>
+                    <p class="mb-0">¿Ventajas?</p>
+                    <p class="mb-0 text-black-50"> Se te devolverá el <%= @offer.voucher.to_i %> % de tu cuenta el siguiente día hábil.</p>
+
                 </div>
               </div>
+            </div>
           </div>
         </div>
-    </div>
+      </div>
+
+
+      <div class="container text-center">
+        <button type="button" class="btn btn-bbva-primary">Obtener codigo</button>
+      </div>
   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- </div class="container ">
     <div class="row justify-content-between">
