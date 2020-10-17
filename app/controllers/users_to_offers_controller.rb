@@ -71,6 +71,6 @@ class UsersToOffersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def users_to_offer_params
-      params.require(:users_to_offer).permit(:user_id, :offer_id, :used)
+      params.require(:users_to_offer).permit(:user_id, :offer_id, :used, :code_used)
     end
 end
