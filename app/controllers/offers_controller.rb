@@ -74,7 +74,7 @@ class OffersController < ApplicationController
     def offer_params
 
 
-      
+
       params.require(:offer).permit(:partner_id, :description, :voucher, :category, :level, :url, :due_date )
 
 
