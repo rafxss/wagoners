@@ -1,35 +1,62 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Offers</h1>
+<div class= container >
 
-<table>
-  <thead>
-    <tr>
-      <th>Partner</th>
-      <th>Description</th>
-      <th>Voucher</th>
-      <th>Category</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @offers.each do |offer| %>
+   <% @offers.each do |offer| %>
 
-      <tr>
-        <td><%= offer.partner_id %></td>
-        <td><%= offer.description %></td>
-        <td><%= offer.voucher %></td>
-        <td><%= offer.category %></td>
-        <td><%= link_to 'Show', offer %></td>
-        <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-        <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+  <div class="card-trip m-2 rounded">
+
+        <% if offer.level == "bronce" %>
+           <img src="<%= offer.url %>" style="border-bottom-color: #B88B5E" />
+        <% elsif offer.level == "silver" %>
+           <img src="<%= offer.url %>" style="border-bottom-color: #A3A7A7" />
+        <% else  %>
+            <img src="<%= offer.url %>" style="border-bottom-color: #EDCF80" />
+
+        <% end %>
+
+
+
+
+    <div class="card-trip-infos">
+      <div>
+        <div class="d-flex row justify-content-between">
+          <div>
+            <h2><%= offer.partner.name.capitalize %></h2>
+            <p style="color:#ACCACA"><%= offer.voucher.to_i %>% de descuento.</p>
+          </div>
+          <div>
+            <p class="card-trip-pricing"> <%= offer.due_date %></p>
+          </div>
+        </div>
+
+      </div>
+      <div>
+        <% if offer.level == "bronce" %>
+            <div class="offer-cat" style="background-color: #B88B5E">
+              <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
+            </div>
+        <% elsif offer.level == "silver" %>
+            <div class="offer-cat" style="background-color:  #A3A7A7">
+              <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
+            </div>
+        <% else  %>
+            <div class="offer-cat" style="background-color:  #EDCF80">
+              <i class="<%= OFFER_ICONS[offer.category.downcase.to_sym] %>"></i>
+            </div>
+
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+
+  <% end %>
+</div>
+
+
 
 <%= link_to 'New Offer', new_offer_path %>
+

@@ -6,6 +6,26 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'open-uri'
+require 'faker'
+
+puts "Cleaning database..."
+# User.destroy_all
+
+puts "Cleaning Offer Table..."
+Offer.destroy_all
+
+puts "Cleaning Partner Table..."
+Partner.destroy_all
+
+puts "creating partner"
+Partner.create(name: "Mercadona", phone: "42525", email:"u@gmail.com")
+
+
+puts "creating offers"
+
+
+
 puts("Creating User")
 
 # Create Users
@@ -75,3 +95,4 @@ BranchOffice.create(address: 'Calle del Dr. Drumen 4, Madrid',
 puts("Branches created")
 
 # BranchOffice.near([User.first.latitude, User.first.longitude], 5, unit: :km)
+

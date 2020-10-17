@@ -1,5 +1,6 @@
 <% if current_page?('/') || current_page?('/home') %>
 
+
 <% else %>
 
   <div class="navbar navbar-light navbar-lewagon">
@@ -18,11 +19,15 @@
       <% end %>
     </div>
 
+
     <div>
-    <%= link_to "/profile/#{:id}" do %>
-      <i class="far fa-user"></i>
-    <% end %>
+      <% if current_user %>
+        <a href="/profile/<%= current_user.id %>" class="profile"> <i class="far fa-user"></i></a>
+      <% else %>
+        <a href="/users/sign_in" class="profile"> <i class="far fa-user"></i></a>
+      <% end %>
     </div>
+
   </div>
 
 <% end %>

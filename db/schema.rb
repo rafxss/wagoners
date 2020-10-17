@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_17_112653) do
+ActiveRecord::Schema.define(version: 2020_10_17_155337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "branch_offices", force: :cascade do |t|
     t.string "address"
@@ -28,7 +49,6 @@ ActiveRecord::Schema.define(version: 2020_10_17_112653) do
   end
 
   create_table "offers", force: :cascade do |t|
-    t.bigint "partner_id", null: false
     t.string "description"
     t.float "voucher"
     t.integer "category"
@@ -37,7 +57,8 @@ ActiveRecord::Schema.define(version: 2020_10_17_112653) do
     t.date "due_date"
     t.string "url"
     t.string "level"
-    t.index ["partner_id"], name: "index_offers_on_partner_id"
+    t.bigint "branch_office_id"
+    t.index ["branch_office_id"], name: "index_offers_on_branch_office_id"
   end
 
   create_table "partners", force: :cascade do |t|
@@ -82,8 +103,8 @@ ActiveRecord::Schema.define(version: 2020_10_17_112653) do
     t.index ["user_id"], name: "index_users_to_offers_on_user_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "branch_offices", "partners"
-  add_foreign_key "offers", "partners"
   add_foreign_key "users_to_offers", "offers"
   add_foreign_key "users_to_offers", "users"
 end
