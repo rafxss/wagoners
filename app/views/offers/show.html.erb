@@ -70,12 +70,17 @@
 
 
       <div class="container text-center">
-        <button type="button" class="btn btn-bbva-primary">Obtener codigo</button>
+        <% @offer.users_to_offers.each do |current_offer| %>
+          <% if current_offer.user == current_user %>
+            <%= simple_form_for current_offer, class: "background-none p-0", url: users_to_offer_path(current_offer), method: :patch do |f| %>
+              <%= f.input :code_used, :as => :hidden, :input_html => { :value => :true }, remote: true %>
+              <%= f.submit "Obtener codigo", class: "btn btn-bbva-primary" %>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
   </div>
 </div>
-
-
 
 
 
