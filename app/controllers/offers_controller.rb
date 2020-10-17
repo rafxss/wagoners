@@ -45,6 +45,17 @@ class OffersController < ApplicationController
 
     @distance = Geocoder::Calculations.distance_between([offer_lat, offer_lon], [user_lat, user_lon], units: :km).round(1)
     @office = [ lat: offer_lat, lng: offer_lon, address: @offer.branch_office.address  ]
+
+    qrcode = RQRCode::QRCode.new("http://bbvouchers.herokuapp.com/offers/#{@offer.id}")
+
+    @svg = qrcode.as_svg(
+      offset: 0,
+      fill: 'fff',
+      color: '000',
+      shape_rendering: 'crispEdges',
+      module_size: 6,
+      standalone: true
+    )
   end
 
   # GET /offers/new

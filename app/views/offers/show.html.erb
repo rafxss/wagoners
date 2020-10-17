@@ -1,8 +1,7 @@
 
-<div class="pridv">
-  <div class="row justify-content-between" style="margin-top: -24px;">
+  <div class=" justify-content-between">
 
-    <div class="card-trip d-flex align-items-center mt-4 col-xs-12">
+    <div class="card-trip d-flex align-items-center col-xs-12">
       <br>
         <% if @offer.level == "bronze" %>
           <img class="d-block w-100" src="<%= @offer.url %>" style=" height: 250px; border-bottom-color: #B88B5E;" >
@@ -79,19 +78,40 @@
         </div>
       </div>
 
-
-      <div class="container text-center">
         <% @offer.users_to_offers.each do |current_offer| %>
-          <% if current_offer.user == current_user %>
-            <%= simple_form_for current_offer, class: "background-none p-0", url: users_to_offer_path(current_offer), method: :patch do |f| %>
-              <%= f.input :code_used, :as => :hidden, :input_html => { :value => :true }, remote: true %>
-              <%= f.submit "Obtener codigo", class: "btn btn-bbva-primary" %>
-            <% end %>
+          <% if (current_offer.user == current_user) && (current_offer.code_used == false) %>
+            <div class="container text-center">
+              <%= simple_form_for current_offer, class: "background-none p-0", url: users_to_offer_path(current_offer), method: :patch do |f| %>
+                <%= f.input :code_used, :as => :hidden, :input_html => { :value => :true }, remote: true %>
+                <%= f.submit "Obtener Voucher", class: "btn btn-bbva-primary"%>
+              <% end %>
+            </div>
+          <% else %>
+
+            <div class="container text-center">
+              <button type="button" class="btn btn-bbva-primary" data-toggle="modal" data-target="#exampleModal">
+                Obtener código
+              </button>
+            </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body text-center mb-5">
+                    <%= @svg.html_safe %>
+                  </div>
+                </div>
+              </div>
+            </div>
           <% end %>
         <% end %>
-      </div>
-  </div>
-</div>
+    </div>
 
 
 <% if current_user %>
@@ -109,47 +129,3 @@
     </div>
   </div>
 <% end %>
-
-
-  <!-- </div class="container ">
-    <div class="row justify-content-between">
-      <div class="col-xs-12 col-lg-8">
-          <div class="product-box shadow">
-
-          </div>
-        </div>
-      </div>
-  </div>
-
-
-  <div class="container">
-  <div class="row justify-content-center">
-    <div>
-
-          <div class="col-12 my-4">
-              <div class="d-flex" style="border-radius: 15px;">
-                <img class="d-block w-100" src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602896919/nrd-D6Tu_L3chLE-unsplash_vuxmqj.jpg" >
-
-                <div class="d-flex">
-                  <div class="card-body">
-                      <h4 class="mb-2"> <%#= @offer.branch_office.partner.name.capitalize %></h4>
-                      <div class="d-flex align-items-end">
-                        <h5 class="mb-0 mr-2 "><%#= @offer.voucher  %></h5>
-                      </div>
-                      <p class="text-muted mb-0 p-description mt-2 max-length"> <%#= @offer.description.capitalize %></p>
-                  </div>
-                  <div class="text-right mr-3 mt-4" style="width: 100px; float: left">
-
-                    <span class="color-green text-right mb-0 p-description mt-2 max-length"> <%#= @offer.category %> Offers</span>
-                  </div>
-                </div>
-              </div>
-              </div>
-
-          </div>
-
-    </div>
-  </div>
-</div> -->
-
-
