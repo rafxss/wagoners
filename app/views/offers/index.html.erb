@@ -1,5 +1,4 @@
-
-<div class= container >
+<div id="offers-container" class= "container offer-index" >
   <p class="mt-4 ">Enuentra las ofertas más cercanas a tu ubicación</p>
 
    <% @offers.each do |offer| %>
@@ -13,6 +12,31 @@
       <%= render 'disable_card', offer: offer %>
     <% end %>
   <% end %>
+
+  <%= link_to 'New Offer', new_offer_path %>
 </div>
 
+<% if current_user %>
+  <div id="map-container" class="text-center" hidden>
+    <div class="justify-content-between" data-controller="map">
+      <div id="map" class="index-map"
+           <%# style="width: 100vw; height: 100vh;" %>
+           data-target="map.map"
+           data-address="<%= @user_address.to_json %>"
+           data-offices="<%= @branches_to_show.to_json %>"
+           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<nav class="d-flex">
+  <div class="fixed-bottom" >
+    <div id="btn-map-container" class="container d-flex">
+      <% if current_user %>
+        <a id="map-toggler" class="btn btn-bbva-map" href=""><i class="fas fa-map"></i></a>
+      <% end %>
+    </div>
+  </div>
+</nav>
 
