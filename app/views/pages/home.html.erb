@@ -1,3 +1,17 @@
+
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+<div data-controller="map">
+  <div id="map"
+      style="width: 100%; height: 600px;"
+      data-target="map.map"
+      data-address="<%= @user_address.to_json %>"
+      data-offices="<%= @offices.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
+
  <div class="container">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators text-dark">
@@ -53,3 +67,4 @@
     <button type="button" class="btn btn-bbva-secondary">Log in</button>
   </div>
 </div>
+
