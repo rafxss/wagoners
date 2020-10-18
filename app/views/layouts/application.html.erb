@@ -24,7 +24,7 @@
       </div>
     </div>
 
-      <%= render 'shared/navbar' %>
+      <%= render 'shared/navbar' if (signed_in?)%>
       <%= render 'shared/flashes' %>
 
       <%= yield %>
