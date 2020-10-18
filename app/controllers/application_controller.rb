@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :address, :date_of_birth, :geolocation_access])
-    devise_parameter_sanitizer.permit(:accept_invitation, keys: [:first_name, :last_name, :address, :date_of_birth, :geolocation_access])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :address, :date_of_birth, :geolocation_access, :admin])
+    devise_parameter_sanitizer.permit(:accept_invitation, keys: [:first_name, :last_name, :address, :date_of_birth, :geolocation_access, :admin])
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:address, :date_of_birth, :geolocation_access])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:address, :date_of_birth, :geolocation_access, :admin])
   end
 
   def after_sign_in_path_for(resource)
