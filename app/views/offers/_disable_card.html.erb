@@ -28,9 +28,9 @@
 
             <% if params[:user_id].present? %>
               <% offer.users_to_offers.each do |used_offer| %>
-                <% if used_offer.used == true %>
+                <% if if (used_offer.user == current_user) && (used_offer.used == true) %>
                   <p class="text-warning">Usado</p>
-                <% else %>
+                <% elsif (used_offer.user == current_user) && (used_offer.used == false) %>
                   <p class="text-success">Disponible</p>
                 <% end %>
               <% end %>
