@@ -7,7 +7,7 @@ export default class extends Controller {
 
   connect() {
     // console.log("hello from StimulusJS")
-    
+
     this.initMapbox()
 
     const mapToggler = document.getElementById('map-toggler')
@@ -15,12 +15,12 @@ export default class extends Controller {
       event.preventDefault();
       // console.log(this.map)
       // this.map.resize()
-      
+
       // this.map.on('load', (event) => {
         //   this.map.resize();
         //   console.log('resizing')
         // });
-        
+
       this.toggleVisibility('map-container')
       this.toggleVisibility('offers-container')
       // this.speedyRafa()
@@ -31,7 +31,7 @@ export default class extends Controller {
     // flyToButon.addEventListener('click', (event) => {
     //   this.setNewMapCenter();
     //   });
-    
+
   }
 
   initMapbox() {
@@ -39,7 +39,7 @@ export default class extends Controller {
       mapboxgl.accessToken = this.mapTarget.dataset.mapboxApiKey;
       this.address = JSON.parse(this.mapTarget.dataset.address)[0]; // Getting lat/lng from controller
       this.offices = JSON.parse(this.mapTarget.dataset.offices)
-      
+
       this.map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
@@ -89,13 +89,13 @@ export default class extends Controller {
       new mapboxgl.Marker(custom)
         .setLngLat([position.coords.longitude, position.coords.latitude])
         .addTo(this.map);
-      
+
       this.map.setCenter([position.coords.longitude, position.coords.latitude]);
       this.map.setZoom(14);
     })
     // const address = this.address
     // -12.081561599999999,-76.939264
-    
+
   }
 
   fitMap() {
@@ -121,7 +121,7 @@ export default class extends Controller {
   //         position.coords.longitude
   //       ],
   //       essential: true // this animation is considered essential with respect to prefers-reduced-motion
-  
+
   //     })
   //   })
 

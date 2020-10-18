@@ -11,14 +11,9 @@ class PagesController < ApplicationController
     #     lat: office.latitude,
     #     lng: office.longitude
     #   }
-    # end
+  end
 
-    def profile
-      if params[:id].present?
-        @user = User.find(params[:id])
-      else
-        @user = current_user
-      end
-    end
+  def profile
+    @user = User.find(params[:id])
   end
 end
