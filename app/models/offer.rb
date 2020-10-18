@@ -23,4 +23,11 @@ class Offer < ApplicationRecord
       UsersToOffer.create(offer_id: id, user: user)
     end
   end
+
+  include PgSearch::Model
+  pg_search_scope :search_by_category, against: :category
+  pg_search_scope :search_by_level, against: :level
+  # pg_search_scope :filter,
+  #   against: [:category, :level]
+  # scope :by_category, ->(category) { where(category: category) }
 end
