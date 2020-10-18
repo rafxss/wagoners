@@ -9,12 +9,22 @@ Rails.application.routes.draw do
   resources :branch_offices
   resources :users_to_offers
   resources :partners
-  root to: 'pages#home'
+
+
+
+  authenticated :user do
+    root to: "offers#index", as: :authenticated_root
+  end
+
+  devise_scope :user do
+    root to: 'pages#home'
+  end
 
 
   resources :users do
     resources :offers
   end
+
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
