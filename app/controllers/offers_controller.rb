@@ -25,7 +25,7 @@ class OffersController < ApplicationController
                     .select { |b| !b.offers.empty? }
 
     # Get offers from the array of branches
-    @near_offers = @near_offices.map { |office| office.offers[0]}
+    @offers = @near_offices.map { |office| office.offers[0]}
     
     # Expose a json with data to be rendered
     @branches_to_show = @near_offices.map do |office|
