@@ -118,14 +118,14 @@
   <div class="container text-center mt-4">
     <div class="row justify-content-between" data-controller="offer">
       <div id="map"
-          style="width: 100vw; height: 30vh;"
           data-target="offer.map"
           data-office="<%= @office.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+          style="width: 100vw; height: 30vh;">
       </div>
-      <!-- <p> -->
-        <%#= @office[0][:address]%>
-      <!-- </p> -->
+      <p>
+        <%= @office[0][:address]%>
+      </p>
     </div>
   </div>
 <% end %>

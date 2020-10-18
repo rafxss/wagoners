@@ -1,5 +1,5 @@
-<div id="offers-container" class= "container offer-index" >
-  <p class="mt-4 ">Enuentra las ofertas más cercanas a tu ubicación</p>
+<div id="offers-container" class= "container container-index" >
+  <p class="mt-4 ">Encuentra las ofertas más cercanas a tu ubicación</p>
 
    <% @offers.each do |offer| %>
     <% if current_user.category == "gold" %>
@@ -16,14 +16,15 @@
 </div>
 
 <% if current_user %>
-  <div id="map-container" class="text-center" hidden>
-    <div class="justify-content-between" data-controller="map">
-      <div id="map" class="index-map"
-           <%# style="width: 100vw; height: 100vh;" %>
-           data-target="map.map"
-           data-address="<%= @user_address.to_json %>"
-           data-offices="<%= @branches_to_show.to_json %>"
-           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div id="map-container" class="container text-center">
+    <div class="row justify-content-between" data-controller="map">
+      <div id="map" 
+        data-target="map.map"
+        data-address="<%= @user_address.to_json %>"
+        data-offices="<%= @branches_to_show.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        style='width: 100vw; height: 99vh;' 
+        >
       </div>
     </div>
   </div>

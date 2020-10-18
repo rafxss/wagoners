@@ -12,8 +12,8 @@ export default class extends Controller {
     mapToggler.addEventListener("click", (event) => {
       event.preventDefault();
 
-      this.toggleVisibility('map-container')
-      this.toggleVisibility('offers-container')
+      // this.toggleVisibility('map')
+      // this.toggleVisibility('offers-container')
       // this.speedyRafa()
 
       // console.log('Map toggler')
@@ -28,7 +28,7 @@ export default class extends Controller {
 
       this.map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v10',
+        style: 'mapbox://styles/mapbox/streets-v11',
         // center: [this.address.lng, this.address.lat], 
         zoom: 15
       });
@@ -72,16 +72,6 @@ export default class extends Controller {
     const e = document.getElementById(id);
     // console.log(e)
     e.toggleAttribute('hidden')
-  }
-
-  speedyRafa() {
-    const e = document.querySelector('.mapboxgl-canvas')
-    // e.style.width = '100vw'
-    // e.style.height = '100vh'
-    // e.setAttribute('width', '750')
-    // e.setAttribute('height', '1334')
-
-    console.log(e)
   }
 
 }

@@ -13,6 +13,9 @@
 @import "pages/index";
 @import "mapbox-gl/dist/mapbox-gl";
 @import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
+@import "components/onboard";
+@import "components/profile";
+@import "components/buttons";
 
 .office-marker {
   padding: 10px;
@@ -30,21 +33,10 @@
   border: 3px solid blue;
 }
 
-.offer-index {
+.container-index {
   margin-bottom: 80px;
 }
 
-.index-map {
- width: 100vw; 
- height: 100vh;
-}
 
-.mapboxgl-canvas-container {
-  height: 100vh;
-}
-
-@import "components/onboard";
-@import "components/profile";
-@import "components/buttons";
 
 
