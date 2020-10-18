@@ -20,7 +20,7 @@
 .office-marker {
   padding: 10px;
   border-radius: 50%;
-  background-color: #f381814f;
+  background-color: #f38181;
   background-blend-mode: screen;
   border: 3px solid #f38181;
 }
@@ -31,6 +31,14 @@
   background-color: blue;
   background-blend-mode: screen;
   border: 3px solid blue;
+}
+
+.current-marker {
+  padding: 10px;
+  border-radius: 50%;
+  background-color: green;
+  background-blend-mode: screen;
+  border: 3px solid green;
 }
 
 .container-index {
