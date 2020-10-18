@@ -50,3 +50,7 @@ p.colored {
 .fixed-bottom {
   z-index: 998 !important;
 }
+
+.text-new {
+  font-size: revert;
+}

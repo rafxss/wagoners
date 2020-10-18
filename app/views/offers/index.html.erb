@@ -4,13 +4,13 @@
 
     <%= form_tag offers_path, method: :get, class: 'd-flex align-items-center mt-3' do %>
       <div class="btn-group mr-2 mb-2 ">
-        <%= select_tag :category, options_for_select(@categories, params[:category]), include_blank: "Categoria", class: 'btn btn-outline-dark rounded-pill' %>
+        <%= select_tag :category, options_for_select(@categories, params[:category]), include_blank: "Categoria", class: 'btn btn-outline-dark rounded-pill text-new' %>
       </div>
       <div class="btn-group mr-2 mb-2 ">
-        <%= select_tag :level, options_for_select(@levels, params[:level]), include_blank: "Nivel", class: 'btn btn-outline-dark rounded-pill' %>
+        <%= select_tag :level, options_for_select(@levels, params[:level]), include_blank: "Nivel", class: 'btn btn-outline-dark rounded-pill text-new' %>
       </div>
       <div class="mr-2 mb-2">
-        <%= submit_tag "Aplicar", class: "btn btn-dark rounded-pill mr-1" %>
+        <%= submit_tag "Aplicar", class: "btn btn-dark rounded-pill mr-1 text-new" %>
         <a href="/offers" class="color-link-none text-decoration-none"><i class="far fa-trash-alt"></i></a>
       </div>
     <% end %>
