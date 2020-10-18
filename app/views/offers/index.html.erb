@@ -1,19 +1,23 @@
 
 <div id="offers-container" class= "container container-index" hidden>
-  <p class="mt-4 ">Encuentra las ofertas más cercanas a tu ubicación</p>
+  <% if @offers.count > 0%>
+    <p class="mt-4 ">Encuentra las ofertas más cercanas a tu ubicación</p>
 
-   <% @near_offers.each do |offer| %>
-    <% if current_user.category == "gold" %>
-      <%= render 'normal_card', offer: offer %>
-    <% elsif current_user.category == "silver" && offer.level == "bronze" || current_user.category == "silver" && offer.level == "silver" %>
-      <%= render 'normal_card', offer: offer %>
-    <% elsif current_user.category == "bronze" && (offer.level == "bronze") %>
-      <%= render 'normal_card', offer: offer %>
-    <% else %>
-      <%= render 'disable_card', offer: offer %>
+    <% @offers.each do |offer| %>
+      <% if current_user.category == "gold" %>
+        <%= render 'normal_card', offer: offer %>
+      <% elsif current_user.category == "silver" && offer.level == "bronze" || current_user.category == "silver" && offer.level == "silver" %>
+        <%= render 'normal_card', offer: offer %>
+      <% elsif current_user.category == "bronze" && (offer.level == "bronze") %>
+        <%= render 'normal_card', offer: offer %>
+      <% else %>
+        <%= render 'disable_card', offer: offer %>
+      <% end %>
     <% end %>
+  <% else %>
+    <div>
+    </div>
   <% end %>
-
 </div>
 
 <%# <% if current_user %>
