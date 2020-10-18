@@ -18,22 +18,32 @@ class OffersController < ApplicationController
 
     @user_address = [ lat: current_user.latitude, lng: current_user.longitude  ]
 
-    @branches_to_show = @offers.map do |offer|
-      {
-        lat: offer.branch_office.latitude ,
-        lng: offer.branch_office.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { branch_office: offer.branch_office, partner: offer.branch_office.partner })
+    @radius = 10
 
+    # Get branch_offices with offers within a radius of 0.15km from user.address(home)
+    @near_offices = BranchOffice.includes(:offers).near([current_user.latitude, current_user.longitude], @radius)
+                    .select { |b| !b.offers.empty? }
+
+    # Get offers from the array of branches
+    @near_offers = @near_offices.map { |office| office.offers[0]}
+    
+    # Expose a json with data to be rendered
+    @branches_to_show = @near_offices.map do |office|
+      {
+        lat: office.latitude,
+        lng: office.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { branch_office: office, partner: office.partner })
       }
     end
 
-
-    # @offices = BranchOffice.all.geocoded.map do |office|
+    # @branches_to_show = @offers.map do |offer|
     #   {
-    #     lat: office.latitude,
-    #     lng: office.longitude
+    #     lat: offer.branch_office.latitude,
+    #     lng: offer.branch_office.longitude,
+    #     infoWindow: render_to_string(partial: "info_window", locals: { branch_office: offer.branch_office, partner: offer.branch_office.partner })
     #   }
     # end
+
   end
 
   # GET /offers/1

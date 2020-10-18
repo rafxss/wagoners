@@ -1,7 +1,8 @@
+
 <div id="offers-container" class= "container container-index" hidden>
   <p class="mt-4 ">Encuentra las ofertas más cercanas a tu ubicación</p>
 
-   <% @offers.each do |offer| %>
+   <% @near_offers.each do |offer| %>
     <% if current_user.category == "gold" %>
       <%= render 'normal_card', offer: offer %>
     <% elsif current_user.category == "silver" && offer.level == "bronze" || current_user.category == "silver" && offer.level == "silver" %>
