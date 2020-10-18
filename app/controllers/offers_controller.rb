@@ -18,7 +18,7 @@ class OffersController < ApplicationController
 
     @user_address = [ lat: current_user.latitude, lng: current_user.longitude  ]
 
-    @radius = 10
+    @radius = 100
 
     # Get branch_offices with offers within a radius of 0.15km from user.address(home)
     @near_offices = BranchOffice.includes(:offers).near([current_user.latitude, current_user.longitude], @radius)
@@ -26,7 +26,7 @@ class OffersController < ApplicationController
 
     # Get offers from the array of branches
     @near_offers = @near_offices.map { |office| office.offers[0]}
-    
+
     # Expose a json with data to be rendered
     @branches_to_show = @near_offices.map do |office|
       {
@@ -56,8 +56,8 @@ class OffersController < ApplicationController
     user_lon = current_user.longitude
 
     @distance = Geocoder::Calculations.distance_between([offer_lat, offer_lon], [user_lat, user_lon], units: :km).round(1)
-    @office = [ lat: offer_lat, 
-                lng: offer_lon, 
+    @office = [ lat: offer_lat,
+                lng: offer_lon,
                 address: @offer.branch_office.address,
                 infoWindow: render_to_string(partial: "info_window", locals: { branch_office: @offer.branch_office, partner: @offer.branch_office.partner })  ]
 
