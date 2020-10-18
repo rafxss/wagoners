@@ -1,5 +1,6 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  before_action :set_offers, only: :index
 
   # GET /offers
   # GET /offers.json
@@ -11,13 +12,34 @@ class OffersController < ApplicationController
     # Get branch_offices with offers within a radius of 0.15km from user.address(home)
     @near_offices = BranchOffice.includes(:offers).near([current_user.latitude, current_user.longitude], @radius)
                     .select { |b| !b.offers.empty? }
-
     if params[:user_id].present?
       @offers = Offer.includes(:users_to_offers).where(users_to_offers: { user_id: current_user.id, code_used: true })
     else
       # Get offers from the array of branches
-      # raise
-      @offers = @near_offices.map { |office| office.offers[0]}
+      @offers = []
+      @near_offices.each do |office|
+        office.offers.each { |offer| @offers.push(offer) }
+      end
+    end
+
+    # if params[:category] != "" && params[:category].present?
+    #   category = OFFER_CATEGORIES.find_index(params[:category].to_sym)
+    #   @offers = Offer.search_by_category(category)
+    # else
+    #   # @offers = @near_offices.map { |office| office.offers[0]}
+    #   @offers = []
+    #   @near_offices.each do |office|
+    #     office.offers.each { |offer| @offers.push(offer) }
+    #   end
+    # end
+
+    if params[:level] != "" && params[:level].present?
+      @offers = Offer.search_by_level(params[:level])
+    else
+      @offers = []
+      @near_offices.each do |office|
+        office.offers.each { |offer| @offers.push(offer) }
+      end
     end
 
     # @offers.each do |offer|
@@ -26,14 +48,14 @@ class OffersController < ApplicationController
 
     @user_address = [ lat: current_user.latitude, lng: current_user.longitude  ]
 
-    @radius = 100000000000000000
+    # @radius = 100000000000000000
 
-    # Get branch_offices with offers within a radius of 0.15km from user.address(home)
-    @near_offices = BranchOffice.includes(:offers).near([current_user.latitude, current_user.longitude], @radius)
-                    .select { |b| !b.offers.empty? }
+    # # Get branch_offices with offers within a radius of 0.15km from user.address(home)
+    # @near_offices = BranchOffice.includes(:offers).near([current_user.latitude, current_user.longitude], @radius)
+    #                 .select { |b| !b.offers.empty? }
 
-    # Get offers from the array of branches
-    @near_offers = @near_offices.map { |office| office.offers[0]}
+    # # Get offers from the array of branches
+    # @near_offers = @near_offices.map { |office| office.offers[0]}
 
 
     # Expose a json with data to be rendered
@@ -135,6 +157,16 @@ class OffersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_offer
       @offer = Offer.find(params[:id])
+    end
+
+    def set_offers
+      @offers = Offer.all
+
+      @categories = @offers.map { |offer| offer.category }
+      @categories.uniq!
+
+      @levels = @offers.map { |offer| offer.level.capitalize }
+      @levels.uniq!
     end
 
     # Only allow a list of trusted parameters through.

@@ -1,7 +1,19 @@
 
 <div id="offers-container" class= "container container-index" hidden>
   <% if @offers.count > 0%>
-    <p class="mt-4 ">Encuentra las ofertas más cercanas a tu ubicación</p>
+
+    <%= form_tag offers_path, method: :get, class: 'd-flex align-items-center mt-3' do %>
+      <div class="btn-group mr-2 mb-2 ">
+        <%= select_tag :category, options_for_select(@categories, params[:category]), include_blank: "Categoria", class: 'btn btn-outline-dark rounded-pill' %>
+      </div>
+      <div class="btn-group mr-2 mb-2 ">
+        <%= select_tag :level, options_for_select(@levels, params[:level]), include_blank: "Nivel", class: 'btn btn-outline-dark rounded-pill' %>
+      </div>
+      <div class="mr-2 mb-2">
+        <%= submit_tag "Aplicar", class: "btn btn-dark rounded-pill mr-1" %>
+        <a href="/offers" class="color-link-none text-decoration-none"><i class="far fa-trash-alt"></i></a>
+      </div>
+    <% end %>
 
     <% @offers.each do |offer| %>
       <% if current_user.category == "gold" %>
