@@ -33,12 +33,15 @@ export default class extends Controller {
   }
 
   showBranchOffice() {
-    const address = this.office
+    const office = this.office
     const custom = document.createElement('div')
     custom.classList.add('office-marker')
     // console.log(address)
+    const popup = new mapboxgl.Popup().setHTML(office.infoWindow); // add this
+
     new mapboxgl.Marker(custom)
-      .setLngLat([address.lng, address.lat])
+      .setLngLat([office.lng, office.lat])
+      .setPopup(popup) // add this
       .addTo(this.map);
   }
 
