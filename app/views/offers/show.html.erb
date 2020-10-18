@@ -83,13 +83,13 @@
             <div class="container text-center">
               <%= simple_form_for current_offer, class: "background-none p-0", url: users_to_offer_path(current_offer), method: :patch do |f| %>
                 <%= f.input :code_used, :as => :hidden, :input_html => { :value => :true }, remote: true %>
-                <%= f.submit "Obtener Voucher", class: "btn btn-bbva-primary"%>
+                <div class="d-flex"><%= f.submit "Obtener Voucher", class: "btn btn-bbva-primary flex-grow-1 py-2 m-3" %></div>
               <% end %>
             </div>
-          <% else %>
+          <% elsif (current_offer.user == current_user) && (current_offer.code_used == true) %>
 
-            <div class="container text-center">
-              <button type="button" class="btn btn-bbva-primary" data-toggle="modal" data-target="#exampleModal">
+            <div class="container text-center d-flex">
+              <button type="button" class="btn btn-bbva-primary flex-grow-1 py-2 m-3" data-toggle="modal" data-target="#exampleModal">
                 Obtener código
               </button>
             </div>
@@ -123,9 +123,9 @@
           data-office="<%= @office.to_json %>"
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
-      <p>
-        <%= @office[0][:address]%>
-      </p>
+      <!-- <p> -->
+        <%#= @office[0][:address]%>
+      <!-- </p> -->
     </div>
   </div>
 <% end %>

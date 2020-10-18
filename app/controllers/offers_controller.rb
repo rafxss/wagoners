@@ -18,7 +18,7 @@ class OffersController < ApplicationController
 
     @user_address = [ lat: current_user.latitude, lng: current_user.longitude  ]
 
-    @branches_to_show = @offers.map do |offer| 
+    @branches_to_show = @offers.map do |offer|
       {
         lat: offer.branch_office.latitude ,
         lng: offer.branch_office.longitude
@@ -88,7 +88,7 @@ class OffersController < ApplicationController
   def update
     respond_to do |format|
       if @offer.update(offer_params)
-        format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
+        format.html { redirect_to @offer, notice: '¡El Voucher se ha canjeado con éxito!' }
         format.json { render :show, status: :ok, location: @offer }
       else
         format.html { render :edit }
