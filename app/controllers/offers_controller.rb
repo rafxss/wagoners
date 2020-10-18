@@ -6,15 +6,23 @@ class OffersController < ApplicationController
   def index
     # byebug
     # @offers = Offer.all
+
+    @radius = 100
+    # Get branch_offices with offers within a radius of 0.15km from user.address(home)
+    @near_offices = BranchOffice.includes(:offers).near([current_user.latitude, current_user.longitude], @radius)
+                    .select { |b| !b.offers.empty? }
+
     if params[:user_id].present?
       @offers = Offer.includes(:users_to_offers).where(users_to_offers: { user_id: current_user.id, code_used: true })
     else
-      @offers = Offer.all
+      # Get offers from the array of branches
+      # raise
+      @offers = @near_offices.map { |office| office.offers[0]}
     end
 
-    @offers.each do |offer|
-      offer.due_date_changes
-    end
+    # @offers.each do |offer|
+    #   offer.due_date_changes
+    # end
 
     @user_address = [ lat: current_user.latitude, lng: current_user.longitude  ]
 
@@ -26,6 +34,7 @@ class OffersController < ApplicationController
 
     # Get offers from the array of branches
     @near_offers = @near_offices.map { |office| office.offers[0]}
+
 
     # Expose a json with data to be rendered
     @branches_to_show = @near_offices.map do |office|
