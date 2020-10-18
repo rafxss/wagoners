@@ -40,12 +40,12 @@ class UsersToOffersController < ApplicationController
   # PATCH/PUT /users_to_offers/1
   # PATCH/PUT /users_to_offers/1.json
   def update
-    @offer = Offer.find(params[:id])
+    @offer = UsersToOffer.find(params[:id]).offer
 
     respond_to do |format|
       if @users_to_offer.update(users_to_offer_params)
         format.html { redirect_to @offer, notice: '¡Has canjeado tu Voucher con éxito!' }
-        format.json { render :show, status: :ok, location: @users_to_offer }
+        format.json { render :show, status: :ok, location: @offer }
         # @users_to_offer.user.update(point: 100)
 
       else
