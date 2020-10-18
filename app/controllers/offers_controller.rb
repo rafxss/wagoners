@@ -26,6 +26,16 @@ class OffersController < ApplicationController
 
     @user_address = [ lat: current_user.latitude, lng: current_user.longitude  ]
 
+    @radius = 100000000000000000
+
+    # Get branch_offices with offers within a radius of 0.15km from user.address(home)
+    @near_offices = BranchOffice.includes(:offers).near([current_user.latitude, current_user.longitude], @radius)
+                    .select { |b| !b.offers.empty? }
+
+    # Get offers from the array of branches
+    @near_offers = @near_offices.map { |office| office.offers[0]}
+
+
     # Expose a json with data to be rendered
     @branches_to_show = @near_offices.map do |office|
       {
