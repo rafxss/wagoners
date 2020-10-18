@@ -11,9 +11,16 @@ export default class extends Controller {
     const mapToggler = document.getElementById('map-toggler')
     mapToggler.addEventListener("click", (event) => {
       event.preventDefault();
-
-      // this.toggleVisibility('map')
-      // this.toggleVisibility('offers-container')
+      // console.log(this.map)
+      // this.map.resize()
+      
+      // this.map.on('load', (event) => {
+        //   this.map.resize();
+        //   console.log('resizing')
+        // });
+        
+      this.toggleVisibility('map-container')
+      this.toggleVisibility('offers-container')
       // this.speedyRafa()
 
       // console.log('Map toggler')
@@ -29,10 +36,8 @@ export default class extends Controller {
       this.map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
-        // center: [this.address.lng, this.address.lat], 
         zoom: 15
       });
-
 
       this.showUserAddress()
       this.showBrancheOffices()
@@ -46,8 +51,10 @@ export default class extends Controller {
       const custom = document.createElement('div')
       custom.classList.add('office-marker')
       // console.log(office)
+      const popup = new mapboxgl.Popup().setHTML(office.infoWindow); // add this
       new mapboxgl.Marker(custom)
         .setLngLat([office.lng, office.lat])
+        .setPopup(popup) // add this
         .addTo(this.map);
     });
   }

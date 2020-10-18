@@ -3,7 +3,7 @@
 
 <% else %>
 
-  <div class="navbar navbar-light navbar-lewagon">
+  <div class="navbar navbar-light navbar-lewagon fixed-top top-nav">
 
     <%= link_to :back, class: "navbar-brand" do %>
       <i class="fas fa-chevron-left"></i>
@@ -12,7 +12,6 @@
     <div>
       <% if current_page?('/offers') %>
         <img src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602959365/Group_75_1_oedfum.svg" alt="">
-
       <% elsif current_page?('/projects') %>
         <img src="https://res.cloudinary.com/rafaruigomez/image/upload/v1602959365/Group_75_1_oedfum.svg" alt="">
       <% elsif current_page?('/profile') %>
