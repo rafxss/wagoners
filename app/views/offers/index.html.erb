@@ -20,11 +20,10 @@
     <div class="row justify-content-between" data-controller="map">
       <div id="map" 
         data-target="map.map"
-        data-address="<%= @user_address.to_json %>"
-        data-offices="<%= @branches_to_show.to_json %>"
+        data-address='<%= @user_address.to_json %>'
+        data-offices='<%= @branches_to_show.to_json %>'
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-        style='width: 100vw; height: 99vh;' 
-        >
+        style="width: 100vw; height: 100vh;">
       </div>
     </div>
   </div>
