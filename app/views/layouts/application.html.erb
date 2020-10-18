@@ -25,7 +25,7 @@
       </div>
     </div>
 
-      <%= render 'shared/navbar' if (signed_in?) || current_page?('/home')%>
+      <%= render 'shared/navbar' if (signed_in?) && current_page?('/home') || (signed_in?) && !current_page?("/profile/#{current_user.id}") %>
       <%= render 'shared/flashes' %>
 
       <%= yield %>

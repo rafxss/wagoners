@@ -7,7 +7,7 @@ class UsersToOffer < ApplicationRecord
   private
 
   def adding_points_to_user
-    if used == true
+    if code_used == true
       case offer.category
       when "con_credito"
         user.update(point: user.point += 50)
