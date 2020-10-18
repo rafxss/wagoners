@@ -21,7 +21,9 @@ class OffersController < ApplicationController
     @branches_to_show = @offers.map do |offer|
       {
         lat: offer.branch_office.latitude ,
-        lng: offer.branch_office.longitude
+        lng: offer.branch_office.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { branch_office: offer.branch_office, partner: offer.branch_office.partner })
+
       }
     end
 

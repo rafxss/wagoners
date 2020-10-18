@@ -11,7 +11,14 @@ export default class extends Controller {
     const mapToggler = document.getElementById('map-toggler')
     mapToggler.addEventListener("click", (event) => {
       event.preventDefault();
-
+      // console.log(this.map)
+      // this.map.resize()
+      
+      // this.map.on('load', (event) => {
+        //   this.map.resize();
+        //   console.log('resizing')
+        // });
+        
       this.toggleVisibility('map-container')
       this.toggleVisibility('offers-container')
       // this.speedyRafa()
@@ -28,11 +35,9 @@ export default class extends Controller {
 
       this.map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v10',
-        // center: [this.address.lng, this.address.lat], 
+        style: 'mapbox://styles/mapbox/streets-v11',
         zoom: 15
       });
-
 
       this.showUserAddress()
       this.showBrancheOffices()
@@ -46,8 +51,10 @@ export default class extends Controller {
       const custom = document.createElement('div')
       custom.classList.add('office-marker')
       // console.log(office)
+      const popup = new mapboxgl.Popup().setHTML(office.infoWindow); // add this
       new mapboxgl.Marker(custom)
         .setLngLat([office.lng, office.lat])
+        .setPopup(popup) // add this
         .addTo(this.map);
     });
   }
@@ -72,16 +79,6 @@ export default class extends Controller {
     const e = document.getElementById(id);
     // console.log(e)
     e.toggleAttribute('hidden')
-  }
-
-  speedyRafa() {
-    const e = document.querySelector('.mapboxgl-canvas')
-    // e.style.width = '100vw'
-    // e.style.height = '100vh'
-    // e.setAttribute('width', '750')
-    // e.setAttribute('height', '1334')
-
-    console.log(e)
   }
 
 }
