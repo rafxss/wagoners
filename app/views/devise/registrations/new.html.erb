@@ -30,7 +30,7 @@
 
         <%= f.input :address, required: true, label: false, placeholder: 'Dirección*',input_html: { class: 'form-input-wagoners', data: { target: 'autocomplete.input'} } %>
         <%#= f.input :date_of_birth, required: true, class: "form-control" %>
-        <%= f.input :geolocation_access, class: "form-control", label: 'Acepto que se comparta mi ubicación con BBVouchers' %>
+        <%= f.input :geolocation_access, label: 'Acepto que se comparta mi ubicación con BBVouchers', label_html: {class: "terms"} %>
         <br>
         <%= f.input :date_of_birth, required: true, label: "Fecha de nacimiento",
                     start_year: Date.today.year - 90, end_year: Date.today.year - 12,
