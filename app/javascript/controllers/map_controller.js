@@ -49,8 +49,9 @@ export default class extends Controller {
       // console.log(arr)
       this.showUserAddress()
       this.showBrancheOffices()
-      this.showCurrentLocation()
-      // this.fitMap()
+      this.map.setCenter([this.address.lng, this.address.lat]);
+      // this.showCurrentLocation()
+      this.fitMap()
       // this.map.scrollZoom.disable()
     }
   }
@@ -101,7 +102,7 @@ export default class extends Controller {
   fitMap() {
     const bounds = new mapboxgl.LngLatBounds();
     this.offices.forEach(office => bounds.extend([office.lng, office.lat]));
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 });
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 12, duration: 0 });
   }
 
   toggleVisibility(id) {
